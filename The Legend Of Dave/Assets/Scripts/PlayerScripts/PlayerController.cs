@@ -7,11 +7,10 @@ public class PlayerController : MonoBehaviour
     // Controls player speed
     public float movementSpeed;
     // Holds x and y input
-    private Vector2 moveInput;
+    private Vector2 movement;
 
     public Rigidbody2D rb;
 
-    // Start is called before the first frame update
     void Start()
     {
         
@@ -20,12 +19,20 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveInput.x = Input.GetAxisRaw("Horizontal");
-        moveInput.y = Input.GetAxisRaw("Vertical");
+        // Get player movement
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
 
         // Makes it so diagonal movement is not double speed
-        moveInput.Normalize();
+        movement.Normalize();
 
-        rb.velocity = moveInput * movementSpeed;
+        
+    }
+
+    // Updates at same time as physics engine 
+    void FixedUpdate() 
+    {
+        // Applies velocity to the rigid body using unity physics engine
+        rb.velocity = movement * movementSpeed;
     }
 }
