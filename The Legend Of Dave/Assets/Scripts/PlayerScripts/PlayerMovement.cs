@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
 
-        //making player face the direction of the mouse
+        //making player face the direction of the mouse (yay)
         faceMouse();
     }
 
