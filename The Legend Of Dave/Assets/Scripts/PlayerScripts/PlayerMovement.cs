@@ -13,6 +13,9 @@ public class PlayerMovement : MonoBehaviour
     //holds player x and y position
     private Vector2 movement;
 
+    //bool for if the player is facing right (saving on resources)
+    bool facingRight = true;
+
     // Update is called once per frame
     void Update()
     {
@@ -28,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
 
-        //making player face the direction of the mouse
+        //making player face the direction of the mouse (yay)
         faceMouse();
     }
 
@@ -44,12 +47,23 @@ public class PlayerMovement : MonoBehaviour
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
         //if the mouse is to the left of the player it'll face left
-        if(mousePosition.x - transform.position.x >= 0){
-            rb.transform.localScale = new Vector3(1,1,1); 
-        //else it'll face right
-        }else{
-            rb.transform.localScale = new Vector3(-1,1,1);
+        if(mousePosition.x - transform.position.x >= 0 && !facingRight){
+            Flip(); 
         }
+        //if the mouse is to the right of the player it'll face right
+        if(mousePosition.x - transform.position.x <= 0 && facingRight){
+            Flip();
+        }
+    }
+
+    //function for flipping the character only if they need to be flipped
+    void Flip()
+    {
+        Vector3 currentScale = gameObject.transform.localScale;
+        currentScale.x *= -1;
+        gameObject.transform.localScale = currentScale;
+
+        facingRight = !facingRight;
     }
 }
 
