@@ -650,6 +650,10 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 253103035}
+    - target: {fileID: 87770040167083410, guid: 0ca80a3853119754db0d40436182b8cc, type: 3}
+      propertyPath: sightRange
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7231639788291688473, guid: 0ca80a3853119754db0d40436182b8cc, type: 3}
       propertyPath: m_Controller
       value: 

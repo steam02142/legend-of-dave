@@ -13,9 +13,10 @@ public class Shooting : MonoBehaviour
     void Update()
     {
         if(Input.GetButtonDown("Fire1")){
-            Shoot();
-            
+            Shoot(); 
         }
+
+        
     }
 
     void Shoot(){
@@ -24,5 +25,6 @@ public class Shooting : MonoBehaviour
         rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
 
     }
+
 
 }

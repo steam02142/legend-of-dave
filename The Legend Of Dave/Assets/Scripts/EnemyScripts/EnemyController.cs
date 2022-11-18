@@ -8,7 +8,7 @@ public class EnemyController : MonoBehaviour
     public float moveSpeed;
 
     public float sightRange;
-    public Vector2 moveDirection;
+    private Vector2 moveDirection;
 
     public Animator animator;
 
@@ -47,6 +47,36 @@ public class EnemyController : MonoBehaviour
         
     }
 
+    public void DamageEnemy (int damage)
+    {
+        health -= damage;
+
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // -----------------------------------------------------------------------------------------------------
+    // Dealing with animations below here. Might change into a different script. Using this as a divider for now
+    //  to keep things looking clean
+
     void Animations ()
     {
         // Flip enemy to face player
@@ -69,8 +99,6 @@ public class EnemyController : MonoBehaviour
             animator.SetBool("isMoving", true);
         }
     }
-
-
 
     void Flip()
     {
