@@ -12,6 +12,8 @@ public class EnemyController : MonoBehaviour
 
     public Animator animator;
 
+    public int health = 100;
+
     //bool for if the player is facing right (saving on resources)
     bool facingRight = true;
 
