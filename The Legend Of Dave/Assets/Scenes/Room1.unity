@@ -646,10 +646,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 87770040167083409, guid: 0ca80a3853119754db0d40436182b8cc, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 87770040167083410, guid: 0ca80a3853119754db0d40436182b8cc, type: 3}
+      propertyPath: health
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 87770040167083410, guid: 0ca80a3853119754db0d40436182b8cc, type: 3}
       propertyPath: animator
       value: 
       objectReference: {fileID: 253103035}
+    - target: {fileID: 87770040167083410, guid: 0ca80a3853119754db0d40436182b8cc, type: 3}
+      propertyPath: moveSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 87770040167083410, guid: 0ca80a3853119754db0d40436182b8cc, type: 3}
       propertyPath: sightRange
       value: 4

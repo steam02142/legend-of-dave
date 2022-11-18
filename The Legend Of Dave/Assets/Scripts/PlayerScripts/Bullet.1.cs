@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerBullet : MonoBehaviour
 {
-    public int damage = 50;
+    public int damage = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +23,7 @@ public class PlayerBullet : MonoBehaviour
     {
         if (other.tag != "Player")
         {
+            
             Destroy(gameObject);    
         }
 
