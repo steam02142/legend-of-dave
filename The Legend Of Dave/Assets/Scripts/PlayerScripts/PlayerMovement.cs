@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //allows us to reference player in other scripts
+    public static PlayerMovement instance;
+
     //Controls Players speed
     public float moveSpeed = 5f;
 
@@ -15,6 +18,12 @@ public class PlayerMovement : MonoBehaviour
 
     //bool for if the player is facing right (saving on resources)
     bool facingRight = true;
+
+    void Awake() 
+    {
+        //sets the instance to the object it is attatched to (the player)
+        instance = this;
+    }
 
     // Update is called once per frame
     void Update()
