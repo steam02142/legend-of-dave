@@ -8,7 +8,7 @@ public class EnemyController : MonoBehaviour
     public float moveSpeed;
 
     public float sightRange;
-    public Vector2 moveDirection;
+    private Vector2 moveDirection;
 
     public Animator animator;
 
@@ -16,6 +16,13 @@ public class EnemyController : MonoBehaviour
 
     //bool for if the player is facing right (saving on resources)
     bool facingRight = true;
+
+    // Vars for shooting
+    public bool doesShoot;
+    public GameObject bullet;
+    public Transform firePoint;
+    public float fireRate;
+    private float fireCounter;
 
     // Start is called before the first frame update
     void Start()
@@ -42,10 +49,50 @@ public class EnemyController : MonoBehaviour
 
         rb.velocity = moveDirection * moveSpeed;
 
-
         Animations();
+
+        if (doesShoot)
+        {
+            fireCounter -= Time.deltaTime;
+
+            if (fireCounter <=0)
+            {
+                fireCounter = fireRate;
+                Instantiate (bullet, firePoint.position, firePoint.rotation);
+            }
+        }
         
     }
+
+    public void DamageEnemy (int damage)
+    {
+        health -= damage;
+
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // -----------------------------------------------------------------------------------------------------
+    // Dealing with animations below here. Might change into a different script. Using this as a divider for now
+    //  to keep things looking clean
 
     void Animations ()
     {
@@ -69,8 +116,6 @@ public class EnemyController : MonoBehaviour
             animator.SetBool("isMoving", true);
         }
     }
-
-
 
     void Flip()
     {
