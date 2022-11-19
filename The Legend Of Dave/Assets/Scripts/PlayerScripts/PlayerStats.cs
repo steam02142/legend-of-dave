@@ -44,4 +44,18 @@ public class PlayerStats : MonoBehaviour
         UIController.instance.healthBar.value = currentHealth;
         UIController.instance.healthText.text = currentHealth.ToString() + " / " + maxHealth.ToString();
     }
+
+    public void HealPlayer(int healAmount)
+    {
+        currentHealth += healAmount;
+        // Keeps player from overhealing
+        if (currentHealth >= maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+
+        // Update Health UI
+        UIController.instance.healthBar.value = currentHealth;
+        UIController.instance.healthText.text = currentHealth.ToString() + " / " + maxHealth.ToString();
+    }
 }
