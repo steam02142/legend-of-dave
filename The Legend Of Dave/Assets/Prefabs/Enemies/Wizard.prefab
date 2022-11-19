@@ -158,6 +158,7 @@ MonoBehaviour:
   bullet: {fileID: 3111564539366532146, guid: 5ce020e9f0cd3134cbaeaaac7b23f9dc, type: 3}
   firePoint: {fileID: 1103594117469889986}
   fireRate: 0.5
+  enemy: {fileID: 1192713976325884646}
 --- !u!95 &8494210537032118129
 Animator:
   serializedVersion: 4
@@ -286,7 +287,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4766172340003276680}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.47, y: 0.55, z: 0}
+  m_LocalPosition: {x: 0.23, y: 0.21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

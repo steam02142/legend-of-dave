@@ -307,6 +307,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2336107394525335712, guid: e1710e17b1671364bbab924daa0842c5, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 1418301310}
     - target: {fileID: 2336107394525335741, guid: e1710e17b1671364bbab924daa0842c5, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -357,6 +361,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1710e17b1671364bbab924daa0842c5, type: 3}
+--- !u!212 &1418301310 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2336107394525335740, guid: e1710e17b1671364bbab924daa0842c5, type: 3}
+  m_PrefabInstance: {fileID: 1414497415}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3523743756798539553
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -364,14 +373,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1103594117469889986, guid: dfe135fa9c86d594ba6828840e280b44, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.23
-      objectReference: {fileID: 0}
-    - target: {fileID: 1103594117469889986, guid: dfe135fa9c86d594ba6828840e280b44, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.21
-      objectReference: {fileID: 0}
     - target: {fileID: 1192713976325884645, guid: dfe135fa9c86d594ba6828840e280b44, type: 3}
       propertyPath: m_Name
       value: Wizard
@@ -419,6 +420,10 @@ PrefabInstance:
     - target: {fileID: 1192713976325884647, guid: dfe135fa9c86d594ba6828840e280b44, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1192713976325884666, guid: dfe135fa9c86d594ba6828840e280b44, type: 3}
+      propertyPath: shootRange
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfe135fa9c86d594ba6828840e280b44, type: 3}

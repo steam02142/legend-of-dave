@@ -24,6 +24,10 @@ public class EnemyController : MonoBehaviour
     public float fireRate;
     private float fireCounter;
 
+    public float shootRange;
+
+    public SpriteRenderer enemy;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,35 +37,37 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // If the player is within enemy sight follow the player
-        if (Vector2.Distance(transform.position, PlayerMovement.instance.transform.position) < sightRange)
+        if (enemy.isVisible)
         {
-            moveDirection = PlayerMovement.instance.transform.position - transform.position;
-        }
-        else 
-        {
-            // if you don't see the player, set movement to zero
-            moveDirection = Vector2.zero;
-        }
-
-        // Keep diagonal speed from increasing
-        moveDirection.Normalize();
-
-        rb.velocity = moveDirection * moveSpeed;
-
-        Animations();
-
-        if (doesShoot)
-        {
-            fireCounter -= Time.deltaTime;
-
-            if (fireCounter <=0)
+            // If the player is within enemy sight follow the player
+            if (Vector2.Distance(transform.position, PlayerMovement.instance.transform.position) < sightRange)
             {
-                fireCounter = fireRate;
-                Instantiate (bullet, firePoint.position, firePoint.rotation);
+                moveDirection = PlayerMovement.instance.transform.position - transform.position;
+            }
+            else 
+            {
+                // if you don't see the player, set movement to zero
+                moveDirection = Vector2.zero;
+            }
+
+            // Keep diagonal speed from increasing
+            moveDirection.Normalize();
+
+            rb.velocity = moveDirection * moveSpeed;
+
+            if (doesShoot && Vector2.Distance(transform.position, PlayerMovement.instance.transform.position) < shootRange)
+            {
+                fireCounter -= Time.deltaTime;
+
+                if (fireCounter <=0)
+                {
+                    fireCounter = fireRate;
+                    Instantiate (bullet, firePoint.position, firePoint.rotation);
+                }
             }
         }
-        
+
+        Animations();
     }
 
     public void DamageEnemy (int damage)
