@@ -17,6 +17,13 @@ public class EnemyController : MonoBehaviour
     //bool for if the player is facing right (saving on resources)
     bool facingRight = true;
 
+    // Vars for shooting
+    public bool doesShoot;
+    public GameObject bullet;
+    public Transform firePoint;
+    public float fireRate;
+    private float fireCounter;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,8 +49,18 @@ public class EnemyController : MonoBehaviour
 
         rb.velocity = moveDirection * moveSpeed;
 
-
         Animations();
+
+        if (doesShoot)
+        {
+            fireCounter -= Time.deltaTime;
+
+            if (fireCounter <=0)
+            {
+                fireCounter = fireRate;
+                Instantiate (bullet, firePoint.position, firePoint.rotation);
+            }
+        }
         
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet1 : MonoBehaviour
 {
-    public int damage = 5;
+    public int damage = 50;
 
     // Start is called before the first frame update
     void Start()
@@ -21,17 +21,14 @@ public class Bullet1 : MonoBehaviour
     // If the bullet hits a something, destroy it
     void OnTriggerEnter2D(Collider2D other) 
     {
-        if (other.tag != "Player")
-        {
-            
-            Destroy(gameObject);    
-        }
 
         // If we hit enemy, damage them
         if (other.tag == "Enemy")
         {
             other.GetComponent<EnemyController>().DamageEnemy(damage);
         }
+
+        Destroy(gameObject);
     }
 
     // Destroy bullet if out of frame
