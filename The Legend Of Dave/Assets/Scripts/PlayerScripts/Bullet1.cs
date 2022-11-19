@@ -27,8 +27,11 @@ public class Bullet1 : MonoBehaviour
         {
             other.GetComponent<EnemyController>().DamageEnemy(damage);
         }
-
-        Destroy(gameObject);
+        if (other.tag == "Gun" || other.tag == "Player") {
+            //do nothing
+        } else {
+            Destroy(gameObject);
+        }
     }
 
     // Destroy bullet if out of frame
