@@ -25,7 +25,7 @@ public class EnemyBullet : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            //damage player
+            PlayerStats.instance.DamagePlayer();
         }
 
         Destroy(gameObject);

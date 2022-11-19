@@ -42,11 +42,12 @@ GameObject:
   - component: {fileID: 6643254710652396247}
   - component: {fileID: 6643254710652396246}
   - component: {fileID: 6643254710652396244}
-  - component: {fileID: 6643254710652396245}
   - component: {fileID: 6643254710652396242}
   - component: {fileID: 6643254710652396243}
   - component: {fileID: 6643254710652396240}
+  - component: {fileID: 6643254710652396245}
   - component: {fileID: 6643254710652396241}
+  - component: {fileID: 5858483780221068951}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -143,21 +144,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &6643254710652396245
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6643254710652396265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e59d11a23aeaa4d4f8ba72078ff43cb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  rb: {fileID: 6643254710652396244}
-  animator: {fileID: 6643254710652396242}
 --- !u!95 &6643254710652396242
 Animator:
   serializedVersion: 4
@@ -220,6 +206,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6947085, y: 1.0476229}
   m_EdgeRadius: 0
+--- !u!114 &6643254710652396245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6643254710652396265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e59d11a23aeaa4d4f8ba72078ff43cb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  rb: {fileID: 6643254710652396244}
+  animator: {fileID: 6643254710652396242}
 --- !u!114 &6643254710652396241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,6 +236,20 @@ MonoBehaviour:
   firePoint: {fileID: 6643254710332493537}
   Bullet: {fileID: 8057057437007201798, guid: 354367f87dec0044e8dcb55744529d93, type: 3}
   bulletForce: 10
+--- !u!114 &5858483780221068951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6643254710652396265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9c87f32eb41009448ffbf669adb32aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  maxHealth: 0
 --- !u!1 &6643254711006485079
 GameObject:
   m_ObjectHideFlags: 0
