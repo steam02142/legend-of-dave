@@ -31,9 +31,9 @@ public class PlayerStats : MonoBehaviour
         
     }
 
-    public void DamagePlayer ()
+    public void DamagePlayer (int damage)
     {
-        currentHealth--;
+        currentHealth -= damage;
 
         if (currentHealth <= 0)
         {

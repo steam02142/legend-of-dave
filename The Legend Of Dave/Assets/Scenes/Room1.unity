@@ -881,6 +881,14 @@ PrefabInstance:
       propertyPath: enemy
       value: 
       objectReference: {fileID: 1418301310}
+    - target: {fileID: 2336107394525335712, guid: e1710e17b1671364bbab924daa0842c5, type: 3}
+      propertyPath: doesShoot
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2336107394525335715, guid: e1710e17b1671364bbab924daa0842c5, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2336107394525335741, guid: e1710e17b1671364bbab924daa0842c5, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1234,6 +1242,14 @@ PrefabInstance:
     - target: {fileID: 6643254710332493536, guid: c31bd295430b2e24c80e0e12795a8adc, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643254710652396241, guid: c31bd295430b2e24c80e0e12795a8adc, type: 3}
+      propertyPath: bulletForce
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643254710652396241, guid: c31bd295430b2e24c80e0e12795a8adc, type: 3}
+      propertyPath: bulletVelocity
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6643254710652396247, guid: c31bd295430b2e24c80e0e12795a8adc, type: 3}
       propertyPath: m_RootOrder
