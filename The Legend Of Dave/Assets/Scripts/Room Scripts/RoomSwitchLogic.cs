@@ -12,7 +12,7 @@ public class RoomSwitchLogic : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
     if (other.tag == "Player") {
-        int randomNum = Random.Range(1, 2+1); //not actually for 3 rooms. idk why but you have to add 1 LMAO
+        int randomNum = Random.Range(1, 3+1); //not actually for 3 rooms. idk why but you have to add 1 LMAO
         s = randomNum.ToString();
         sceneToLoad = "Room" + s;
         SceneManager.LoadScene(sceneToLoad);
