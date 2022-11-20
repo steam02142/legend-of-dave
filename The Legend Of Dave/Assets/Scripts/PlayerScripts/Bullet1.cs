@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet1 : MonoBehaviour
 {
     public int damage = 50;
+    public int bulletForce = 500;
 
     // Start is called before the first frame update
     void Start()
@@ -21,16 +22,19 @@ public class Bullet1 : MonoBehaviour
     // If the bullet hits a something, destroy it
     void OnTriggerEnter2D(Collider2D other) 
     {
-
-        // If we hit enemy, damage them
-        if (other.tag == "Enemy")
-        {
-            other.GetComponent<EnemyController>().DamageEnemy(damage);
-        }
-        if (other.tag == "Gun" || other.tag == "Player") {
-            //do nothing
-        } else {
+        //depending on what the bullet collides with it'll behave differently
+        switch(other.gameObject.tag){
+            //if it hit a wall it destorys itself
+            case "Wall":
             Destroy(gameObject);
+            break;
+            //if it hits a enemy it applies a force to said enemy and does damage
+            case "Enemy":
+            other.gameObject.GetComponent<EnemyController>().DamageEnemy(damage);
+            Vector3 bulletdir = Quaternion.AngleAxis(transform.rotation.eulerAngles.z, Vector3.forward) * Vector3.up;
+            other.gameObject.GetComponent<Rigidbody2D>().AddForce(bulletdir * bulletForce);
+            Destroy(gameObject);
+            break;
         }
     }
 
