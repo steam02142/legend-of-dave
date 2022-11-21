@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBullet : MonoBehaviour
+public class EnemyBullet: MonoBehaviour
 {
-    public float speed;
+    public float bulletSpeed;
+    public int damage;
     private Vector3 playerDirection;
 
     // Start is called before the first frame update
@@ -18,21 +19,16 @@ public class EnemyBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += playerDirection * speed * Time.deltaTime;
+        transform.position += playerDirection * bulletSpeed * Time.deltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if (other.tag == "Player")
-        {
-            //damage player
+        switch(other.gameObject.tag){
+            case "Player":
+                PlayerStats.instance.DamagePlayer(damage);
+                Destroy(gameObject);
+                break;
         }
-
-        Destroy(gameObject);
-    }
-
-    private void OnBecameInvisible() 
-    {
-        Destroy(gameObject);
     }
 }
