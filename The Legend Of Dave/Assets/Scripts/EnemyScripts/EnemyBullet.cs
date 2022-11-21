@@ -31,9 +31,4 @@ public class EnemyBullet: MonoBehaviour
                 break;
         }
     }
-
-    private void OnBecameInvisible() 
-    {
-        Destroy(gameObject);
-    }
 }
