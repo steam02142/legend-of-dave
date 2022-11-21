@@ -8,11 +8,28 @@ public class Unload : MonoBehaviour
 
     bool unloaded;
 
+    static int counter = 0;
+
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if (!unloaded && other.tag == "Player")
+        counter++;
+        if (counter == 2)
         {
             unloaded = true;
+            
+            scene = PlayerPrefs.GetInt("startScene");
+
+            AnyManager.anyManager.UnloadScene(scene);
+            
+        }
+
+        if (!unloaded && other.tag == "Player" && counter > 2)
+        {
+            unloaded = true;
+
+            scene = PlayerPrefs.GetInt("lastRoom");
+
+            Debug.Log("did delete" + scene);
 
             AnyManager.anyManager.UnloadScene(scene);
         }

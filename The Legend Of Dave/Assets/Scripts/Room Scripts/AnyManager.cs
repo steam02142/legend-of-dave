@@ -9,12 +9,17 @@ public class AnyManager : MonoBehaviour
 
     bool gameStart;
 
+    int startScene = 1;
+
     void Awake() 
     {
         if (!gameStart)
         {
             anyManager = this;
-            SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
+
+            PlayerPrefs.SetInt("startScene", startScene);
+
+            SceneManager.LoadSceneAsync(startScene, LoadSceneMode.Additive);
 
             gameStart = true;
         }    
