@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Load : MonoBehaviour
 {
-    public int scene;
+    public int sceneToLoad;
+    private int randRoom;
 
     bool loaded;
     
@@ -13,10 +14,16 @@ public class Load : MonoBehaviour
     {
         if (!loaded && other.tag == "Player")
         {
-            SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
+            // Random room logic
+            int randomNum = Random.Range(1, 3+1); //not actually for 3 rooms. idk why but you have to add 1 LMAO
+            randRoom = randomNum;
+            sceneToLoad = randRoom;
 
+            // Load next scene
+            SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Additive);
             loaded = true;
 
+            // Move player to (0, 0, 0)
             PlayerMovement.instance.transform.position = new Vector3 (0, 0, 0);
         }
     }
