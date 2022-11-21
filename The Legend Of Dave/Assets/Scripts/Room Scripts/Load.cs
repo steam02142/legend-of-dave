@@ -16,6 +16,8 @@ public class Load : MonoBehaviour
             SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
 
             loaded = true;
+
+            PlayerMovement.instance.transform.position = new Vector3 (0, 0, 0);
         }
     }
 }
