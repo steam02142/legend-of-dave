@@ -12,10 +12,12 @@ public class Load : MonoBehaviour
     
     static int prevRoom;
 
+    private GameObject[] enemyCheck;
+
     void OnTriggerEnter2D(Collider2D other) 
     {
-        
-        if (!loaded && other.tag == "Player")
+        enemyCheck = GameObject.FindGameObjectsWithTag("Enemy");
+        if (!loaded && other.tag == "Player" && enemyCheck.Length == 0)
         {
             PlayerPrefs.SetInt("lastRoom", prevRoom);
             // Random room logic
