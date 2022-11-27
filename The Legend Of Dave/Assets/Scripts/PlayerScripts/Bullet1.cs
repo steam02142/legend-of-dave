@@ -32,6 +32,8 @@ public class Bullet1 : MonoBehaviour
                 other.gameObject.GetComponent<Rigidbody2D>().AddForce(bulletdir * bulletForce);
                 Destroy(gameObject);
                 break;
+                case "RoomExit":
+                break;
                 default:
                 Destroy(gameObject);
                 break;

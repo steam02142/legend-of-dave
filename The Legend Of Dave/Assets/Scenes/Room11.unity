@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 55943081}
   m_Layer: 0
   m_Name: Circle
-  m_TagString: Untagged
+  m_TagString: RoomExit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2605,7 +2605,7 @@ GameObject:
   - component: {fileID: 424883801}
   m_Layer: 0
   m_Name: Triangle
-  m_TagString: Untagged
+  m_TagString: RoomExit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6551,7 +6551,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 9
-      m_TileSpriteIndex: 9
+      m_TileSpriteIndex: 10
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -7010,10 +7010,10 @@ Tilemap:
     m_Data: {fileID: -247619749, guid: 69349920bb95fa2409b7304afa9a469f, type: 3}
   - m_RefCount: 4
     m_Data: {fileID: 394848674, guid: 69349920bb95fa2409b7304afa9a469f, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -482987202, guid: 69349920bb95fa2409b7304afa9a469f, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -482987202, guid: 69349920bb95fa2409b7304afa9a469f, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 416
     m_Data:

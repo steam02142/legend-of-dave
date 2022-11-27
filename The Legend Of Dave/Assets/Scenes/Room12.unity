@@ -6806,7 +6806,7 @@ GameObject:
   - component: {fileID: 841430313}
   m_Layer: 0
   m_Name: Triangle
-  m_TagString: Untagged
+  m_TagString: RoomExit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6979,7 +6979,7 @@ GameObject:
   - component: {fileID: 1316943534}
   m_Layer: 0
   m_Name: Circle
-  m_TagString: Untagged
+  m_TagString: RoomExit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
