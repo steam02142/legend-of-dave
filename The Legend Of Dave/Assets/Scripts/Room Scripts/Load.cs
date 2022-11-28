@@ -35,6 +35,9 @@ public class Load : MonoBehaviour
 
             // Move player to (0, 0, 0)
             PlayerMovement.instance.transform.position = new Vector3 (0, 0, 0);
+
+            //Set difficulty increase upon going to new room
+            PlayerStats.instance.difficultyFactor += 1;
         }
     }
 

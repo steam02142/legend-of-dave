@@ -31,7 +31,7 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        health = 100 * PlayerStats.instance.difficultyFactor;
     }
 
     // Update is called once per frame
