@@ -21,7 +21,7 @@ public class Load : MonoBehaviour
         {
             PlayerPrefs.SetInt("lastRoom", prevRoom);
             // Random room logic
-            int randomNum = UniqueRandomInt(2, 15+1); //not actually for 3 rooms. idk why but you have to add 1 LMAO
+            int randomNum = UniqueRandomInt(2, 15+1); //Should be to 15+1 atm. //can change for testing purposes
             randRoom = randomNum;
             sceneToLoad = randRoom;
 
