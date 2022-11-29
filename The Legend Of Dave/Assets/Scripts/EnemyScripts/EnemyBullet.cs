@@ -7,6 +7,7 @@ public class EnemyBullet: MonoBehaviour
     public float bulletSpeed;
     public int damage;
     private Vector3 playerDirection;
+    public GameObject hitEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,9 @@ public class EnemyBullet: MonoBehaviour
     {
         switch(other.gameObject.tag){
             case "Player":
+            GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
             PlayerStats.instance.DamagePlayer(damage);
+            Destroy(effect, 0.5f);
             Destroy(gameObject);
             break;
 
@@ -44,6 +47,8 @@ public class EnemyBullet: MonoBehaviour
             break;
 
             default:
+            GameObject effect2 = Instantiate(hitEffect, transform.position, Quaternion.identity);
+            Destroy(effect2, 0.5f);
             Destroy(gameObject);
             break;
         }
