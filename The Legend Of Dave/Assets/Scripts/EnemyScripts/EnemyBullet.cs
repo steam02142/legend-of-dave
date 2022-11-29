@@ -26,13 +26,26 @@ public class EnemyBullet: MonoBehaviour
         transform.position += playerDirection * bulletSpeed * Time.deltaTime;
     }
 
-    private void OnTriggerEnter2D(Collider2D other) 
+    void OnTriggerEnter2D(Collider2D other) 
     {
         switch(other.gameObject.tag){
             case "Player":
-                PlayerStats.instance.DamagePlayer(damage);
-                Destroy(gameObject);
-                break;
+            PlayerStats.instance.DamagePlayer(damage);
+            Destroy(gameObject);
+            break;
+
+            case "RoomExit":
+            break;
+
+            case "Gun":
+            break;
+
+            case "Item":
+            break;
+
+            default:
+            Destroy(gameObject);
+            break;
         }
     }
 }
