@@ -22,24 +22,31 @@ public class Bullet1 : MonoBehaviour
     // If the bullet hits a something, destroy it
     void OnTriggerEnter2D(Collider2D other) 
     {
-        if (other.gameObject.tag != "Player" || other.gameObject.tag != "Gun") {
-            //depending on what the bullet collides with it'll behave differently
-            switch(other.gameObject.tag){
-                //if it hits a enemy it applies a force to said enemy and does damage
-                case "Enemy":
-                other.gameObject.GetComponent<EnemyController>().DamageEnemy(damage);
-                Vector3 bulletdir = Quaternion.AngleAxis(transform.rotation.eulerAngles.z, Vector3.forward) * Vector3.up;
-                other.gameObject.GetComponent<Rigidbody2D>().AddForce(bulletdir * bulletForce);
-                Destroy(gameObject);
-                break;
-                case "RoomExit":
-                break;
-                default:
-                Destroy(gameObject);
-                break;
-            }
+        switch(other.gameObject.tag){
+            //if it hits a enemy it applies a force to said enemy and does damage
+            case "Enemy":
+            other.gameObject.GetComponent<EnemyController>().DamageEnemy(damage);
+            Vector3 bulletdir = Quaternion.AngleAxis(transform.rotation.eulerAngles.z, Vector3.forward) * Vector3.up;
+            other.gameObject.GetComponent<Rigidbody2D>().AddForce(bulletdir * bulletForce);
+            Destroy(gameObject);
+            break;
+            
+            case "RoomExit":
+            break;
+
+            case "Player":
+            break;
+
+            case "Gun":
+            break;
+
+            case "Item":
+            break;
+            
+            default:
+            Destroy(gameObject);
+            break;
         }
-        
     }
 
     // Destroy bullet if out of frame

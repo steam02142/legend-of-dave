@@ -3234,6 +3234,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Health Flask
       objectReference: {fileID: 0}
+    - target: {fileID: 7445053648944129489, guid: 5cd6e81ddc74c81418d3be0914db75ea, type: 3}
+      propertyPath: m_TagString
+      value: Item
+      objectReference: {fileID: 0}
     - target: {fileID: 7445053648944129493, guid: 5cd6e81ddc74c81418d3be0914db75ea, type: 3}
       propertyPath: m_RootOrder
       value: 3
