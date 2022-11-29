@@ -14,6 +14,10 @@ public class EnemyBullet: MonoBehaviour
         // Done in start otherwise bullet would follow player
         playerDirection = PlayerMovement.instance.transform.position - transform.position;
         playerDirection.Normalize();
+        //Adjust to Scale enemy bullet damage
+        //Currently difficulty Factor is a linear increase of 1 each room so in this case
+        //would change enemy bullet damage by +1 every ~5 rooms
+        damage = 1 + Mathf.RoundToInt((float)(0.2 * PlayerStats.instance.difficultyFactor));
     }
 
     // Update is called once per frame
