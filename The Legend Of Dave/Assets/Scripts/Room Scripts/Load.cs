@@ -25,9 +25,6 @@ public class Load : MonoBehaviour
             randRoom = randomNum;
             sceneToLoad = randRoom;
 
-            Debug.Log(sceneToLoad);
-
-            
 
             // Load next scene
             SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Additive);

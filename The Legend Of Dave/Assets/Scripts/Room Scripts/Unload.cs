@@ -13,17 +13,20 @@ public class Unload : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) 
     {
         counter++;
-        if (counter == 2)
+
+        if (counter <= 1)
         {
             unloaded = true;
             
             scene = PlayerPrefs.GetInt("startScene");
 
             AnyManager.anyManager.UnloadScene(scene);
+
+            Destroy(gameObject);
             
         }
 
-        if (!unloaded && other.tag == "Player" && counter > 2)
+        if (!unloaded && other.tag == "Player" && counter >= 2)
         {
             unloaded = true;
 
@@ -32,6 +35,8 @@ public class Unload : MonoBehaviour
             Debug.Log("did delete" + scene);
 
             AnyManager.anyManager.UnloadScene(scene);
+
+            Destroy(gameObject);
         }
         
     }
