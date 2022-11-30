@@ -149,7 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 2336107394525335715}
   moveSpeed: 2
-  sightRange: 4
+  sightRange: 100
   animator: {fileID: 4974125991266432299}
   health: 100
   doesShoot: 0

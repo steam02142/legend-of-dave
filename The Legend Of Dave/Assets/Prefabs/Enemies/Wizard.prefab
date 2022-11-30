@@ -151,7 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1192713976325884665}
   moveSpeed: 2
-  sightRange: 4
+  sightRange: 100
   animator: {fileID: 8494210537032118129}
   health: 100
   doesShoot: 1
@@ -160,6 +160,7 @@ MonoBehaviour:
   fireRate: 0.5
   shootRange: 0
   enemy: {fileID: 1192713976325884646}
+  minRange: 4
 --- !u!95 &8494210537032118129
 Animator:
   serializedVersion: 4
