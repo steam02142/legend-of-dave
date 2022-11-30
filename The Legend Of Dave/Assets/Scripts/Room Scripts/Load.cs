@@ -14,7 +14,12 @@ public class Load : MonoBehaviour
 
     private GameObject[] enemyCheck;
 
-    private Collider2D badcollider = PlayerStats.instance.collider1;
+    private Collider2D badcollider;
+
+    private void Start() 
+    {
+        badcollider = PlayerStats.instance.collider1;
+    }
 
     void OnTriggerEnter2D(Collider2D other) 
     {
