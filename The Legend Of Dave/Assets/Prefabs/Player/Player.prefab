@@ -380,6 +380,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 0
+  difficultyFactor: 0
 --- !u!1 &6643254711006485079
 GameObject:
   m_ObjectHideFlags: 0
