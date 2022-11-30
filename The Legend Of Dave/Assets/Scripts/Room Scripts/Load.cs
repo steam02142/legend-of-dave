@@ -14,8 +14,14 @@ public class Load : MonoBehaviour
 
     private GameObject[] enemyCheck;
 
+    private Collider2D badcollider = PlayerStats.instance.collider1;
+
     void OnTriggerEnter2D(Collider2D other) 
     {
+        if (other == badcollider) {
+            Debug.Log("bad collider detected BEEEEP BOOP");
+            return;
+        }
         enemyCheck = GameObject.FindGameObjectsWithTag("Enemy");
         if (!loaded && other.tag == "Player" && enemyCheck.Length == 0)
         {

@@ -10,6 +10,9 @@ public class PlayerStats : MonoBehaviour
     public int maxHealth;
 
     public int difficultyFactor;
+
+    public CapsuleCollider2D collider1;
+ 
     void Awake() 
     {
         instance = this;    

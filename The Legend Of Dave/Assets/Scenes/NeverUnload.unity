@@ -795,6 +795,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5858483780221068951, guid: c31bd295430b2e24c80e0e12795a8adc, type: 3}
+      propertyPath: collider1
+      value: 
+      objectReference: {fileID: 1940406531}
+    - target: {fileID: 5858483780221068951, guid: c31bd295430b2e24c80e0e12795a8adc, type: 3}
       propertyPath: maxHealth
       value: 5
       objectReference: {fileID: 0}
@@ -813,6 +817,10 @@ PrefabInstance:
     - target: {fileID: 6643254710652396241, guid: c31bd295430b2e24c80e0e12795a8adc, type: 3}
       propertyPath: bulletVelocity
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643254710652396243, guid: c31bd295430b2e24c80e0e12795a8adc, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6643254710652396247, guid: c31bd295430b2e24c80e0e12795a8adc, type: 3}
       propertyPath: m_RootOrder
@@ -1073,6 +1081,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!70 &1940406531 stripped
+CapsuleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6643254710652396243, guid: c31bd295430b2e24c80e0e12795a8adc, type: 3}
+  m_PrefabInstance: {fileID: 1607316365}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1970876275
 GameObject:
   m_ObjectHideFlags: 0
