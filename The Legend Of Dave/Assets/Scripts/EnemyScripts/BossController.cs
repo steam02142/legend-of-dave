@@ -4,66 +4,97 @@ using UnityEngine;
 
 public class BossController : MonoBehaviour
 {
-    public Rigidbody2D rb;
-    public float moveSpeed;
+    public static BossController instance;
 
-    public float sightRange;
+    public BossAction[] actions;
+    private int currentAction;
+    private float actionDuration;
+
+    private float shotCounter;
+    public Rigidbody2D rb2d;
     private Vector2 moveDirection;
 
     public Animator animator;
 
     public int health = 100;
 
+    public GameObject point1;
+    public GameObject point2;
+    public GameObject point3;
+    public GameObject point4;
+
+
     //bool for if the player is facing right (saving on resources)
     bool facingRight = true;
 
-    // Vars for shooting
-    public bool doesShoot;
-    public GameObject bullet;
-    public Transform firePoint;
-    public float fireRate;
-    private float fireCounter;
-
-    public float shootRange;
-
-    public SpriteRenderer enemy;
-
-    public float minRange;
+    void Awake() 
+    {
+        instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         health = 100 * PlayerStats.instance.difficultyFactor;
+
+        actionDuration = actions[currentAction].actionLength;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // If the player is within enemy sight follow the player
-        if (Vector2.Distance(transform.position, PlayerMovement.instance.transform.position) > minRange)
+        if (actionDuration > 0)
         {
-            moveDirection = PlayerMovement.instance.transform.position - transform.position;
+            // Decrease current action duration once per second
+            actionDuration -= Time.deltaTime;
+
+            moveDirection = Vector2.zero;
+
+            // If we should move
+            if (actions[currentAction].shouldMove)
+            {
+                // Chase the player
+                if (actions[currentAction].shouldChasePlayer)
+                {
+                    moveDirection = PlayerMovement.instance.transform.position - transform.position;
+                    moveDirection.Normalize();
+                }
+
+                // Patrol between set points
+                if (actions[currentAction].shouldPatrol)
+                {
+                    moveDirection = actions[currentAction].patrolPointToMoveTo.position - transform.position;
+                }
+            }
+
+
+            rb2d.velocity = moveDirection * actions[currentAction].moveSpeed;
+
+            // Shooting
+            if (actions[currentAction].shouldShoot)
+            {
+                shootDirection();
+                shotCounter -= Time.deltaTime;
+                if (shotCounter <= 0)
+                {
+                    shotCounter = actions[currentAction].timeBetweenShots;
+
+                    foreach(Transform transform in actions[currentAction].shootingPoints)
+                    {
+                        Instantiate(actions[currentAction].bullet, transform.position, transform.rotation);
+                    }
+                }
+            }
         }
         else 
         {
-            // if you don't see the player, set movement to zero
-            moveDirection = Vector2.zero;
-        }
-
-        // Keep diagonal speed from increasing
-        moveDirection.Normalize();
-
-        rb.velocity = moveDirection * moveSpeed;
-
-        if (doesShoot && Vector2.Distance(transform.position, PlayerMovement.instance.transform.position) < shootRange)
-        {
-            fireCounter -= Time.deltaTime;
-
-            if (fireCounter <=0)
+            currentAction++;
+            if (currentAction >= actions.Length)
             {
-                fireCounter = fireRate;
-                Instantiate (bullet, firePoint.position, firePoint.rotation);
+                currentAction = 0;
             }
+
+            actionDuration = actions[currentAction].actionLength;
         }
 
         Animations();
@@ -81,7 +112,25 @@ public class BossController : MonoBehaviour
 
 
 
+    void shootDirection ()
+    {
+        if (!facingRight)
+        {
+            point1.transform.rotation = Quaternion.Euler(0, 0, -180);
+            point2.transform.rotation = Quaternion.Euler(0, 0, 0);
+            point3.transform.rotation = Quaternion.Euler(0, 0, -270);
+            point4.transform.rotation = Quaternion.Euler(0, 0, -90);
 
+        }
+        else
+        {
+            point1.transform.rotation = Quaternion.Euler(0, 0, 0); 
+            point2.transform.rotation = Quaternion.Euler(0, 0, -180);
+            point3.transform.rotation = Quaternion.Euler(0, 0, -270);
+            point4.transform.rotation = Quaternion.Euler(0, 0, -90);
+
+        }
+    }
 
 
 
@@ -130,4 +179,24 @@ public class BossController : MonoBehaviour
 
         facingRight = !facingRight;
     }
+}
+
+[System.Serializable]
+public class BossAction
+{
+    [Header("Action")]
+    public float actionLength;
+
+    public bool shouldMove;
+    public bool shouldChasePlayer;
+    public float moveSpeed;
+    public bool shouldPatrol;
+    public Transform patrolPointToMoveTo;
+
+    
+
+    public bool shouldShoot;
+    public GameObject bullet;
+    public float timeBetweenShots;
+    public Transform[] shootingPoints;
 }
