@@ -37,17 +37,20 @@ public class BossController : MonoBehaviour
     {
         health = 100 * PlayerStats.instance.difficultyFactor;
 
+        // Set how long the current action will take
         actionDuration = actions[currentAction].actionLength;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // If we are currently in an action
         if (actionDuration > 0)
         {
             // Decrease current action duration once per second
             actionDuration -= Time.deltaTime;
 
+            // Start with movement at zero
             moveDirection = Vector2.zero;
 
             // If we should move
@@ -67,18 +70,21 @@ public class BossController : MonoBehaviour
                 }
             }
 
-
+            // Perform movement
             rb2d.velocity = moveDirection * actions[currentAction].moveSpeed;
 
             // Shooting
             if (actions[currentAction].shouldShoot)
             {
+                // Rotates projectile loactions based on boss direction (left/right)
                 shootDirection();
+                // Keep track of shooting speed
                 shotCounter -= Time.deltaTime;
                 if (shotCounter <= 0)
                 {
                     shotCounter = actions[currentAction].timeBetweenShots;
 
+                    // For each shooting point, fire a bullet
                     foreach(Transform transform in actions[currentAction].shootingPoints)
                     {
                         Instantiate(actions[currentAction].bullet, transform.position, transform.rotation);
@@ -88,12 +94,16 @@ public class BossController : MonoBehaviour
         }
         else 
         {
+            // Move to next action
             currentAction++;
+
+            // If we are at the end of our actions, reset
             if (currentAction >= actions.Length)
             {
                 currentAction = 0;
             }
 
+            // Set action time (in seconds)
             actionDuration = actions[currentAction].actionLength;
         }
 
@@ -111,7 +121,7 @@ public class BossController : MonoBehaviour
     }
 
 
-
+    // Rotates projectile loactions based on boss direction (left/right)
     void shootDirection ()
     {
         if (!facingRight)

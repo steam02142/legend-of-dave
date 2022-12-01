@@ -14,6 +14,7 @@ public class BossBullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Move direction to the right 
         direction = transform.right;
         direction.Normalize();    
     }
@@ -21,6 +22,7 @@ public class BossBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Move bullet
         transform.position += direction * speed * Time.deltaTime;
 
         // Boss has been defeated, destroy bullets
