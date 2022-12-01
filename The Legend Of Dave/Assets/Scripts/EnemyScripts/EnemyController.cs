@@ -28,42 +28,41 @@ public class EnemyController : MonoBehaviour
 
     public SpriteRenderer enemy;
 
+    public float minRange;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        health = 100 * PlayerStats.instance.difficultyFactor;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (enemy.isVisible)
+        // If the player is within enemy sight follow the player
+        if (Vector2.Distance(transform.position, PlayerMovement.instance.transform.position) > minRange)
         {
-            // If the player is within enemy sight follow the player
-            if (Vector2.Distance(transform.position, PlayerMovement.instance.transform.position) < sightRange)
+            moveDirection = PlayerMovement.instance.transform.position - transform.position;
+        }
+        else 
+        {
+            // if you don't see the player, set movement to zero
+            moveDirection = Vector2.zero;
+        }
+
+        // Keep diagonal speed from increasing
+        moveDirection.Normalize();
+
+        rb.velocity = moveDirection * moveSpeed;
+
+        if (doesShoot && Vector2.Distance(transform.position, PlayerMovement.instance.transform.position) < shootRange)
+        {
+            fireCounter -= Time.deltaTime;
+
+            if (fireCounter <=0)
             {
-                moveDirection = PlayerMovement.instance.transform.position - transform.position;
-            }
-            else 
-            {
-                // if you don't see the player, set movement to zero
-                moveDirection = Vector2.zero;
-            }
-
-            // Keep diagonal speed from increasing
-            moveDirection.Normalize();
-
-            rb.velocity = moveDirection * moveSpeed;
-
-            if (doesShoot && Vector2.Distance(transform.position, PlayerMovement.instance.transform.position) < shootRange)
-            {
-                fireCounter -= Time.deltaTime;
-
-                if (fireCounter <=0)
-                {
-                    fireCounter = fireRate;
-                    Instantiate (bullet, firePoint.position, firePoint.rotation);
-                }
+                fireCounter = fireRate;
+                Instantiate (bullet, firePoint.position, firePoint.rotation);
             }
         }
 

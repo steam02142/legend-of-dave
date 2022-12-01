@@ -12,20 +12,30 @@ public class Load : MonoBehaviour
     
     static int prevRoom;
 
+    private GameObject[] enemyCheck;
+
+    private Collider2D badcollider;
+
+    private void Start() 
+    {
+        badcollider = PlayerStats.instance.collider1;
+    }
+
     void OnTriggerEnter2D(Collider2D other) 
     {
-        
-        if (!loaded && other.tag == "Player")
+        if (other == badcollider) {
+            Debug.Log("bad collider detected BEEEEP BOOP");
+            return;
+        }
+        enemyCheck = GameObject.FindGameObjectsWithTag("Enemy");
+        if (!loaded && other.tag == "Player" && enemyCheck.Length == 0)
         {
             PlayerPrefs.SetInt("lastRoom", prevRoom);
             // Random room logic
-            int randomNum = UniqueRandomInt(2, 12+1); //not actually for 3 rooms. idk why but you have to add 1 LMAO
+            int randomNum = UniqueRandomInt(2, 15+1); //Should be to 15+1 atm. //can change for testing purposes
             randRoom = randomNum;
             sceneToLoad = randRoom;
 
-            Debug.Log(sceneToLoad);
-
-            
 
             // Load next scene
             SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Additive);
@@ -33,6 +43,9 @@ public class Load : MonoBehaviour
 
             // Move player to (0, 0, 0)
             PlayerMovement.instance.transform.position = new Vector3 (0, 0, 0);
+
+            //Set difficulty increase upon going to new room
+            PlayerStats.instance.difficultyFactor += 1;
         }
     }
 

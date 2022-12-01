@@ -6,43 +6,39 @@ public class Bullet1 : MonoBehaviour
 {
     public int damage = 50;
     public int bulletForce = 500;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameObject hitEffect;
 
     // If the bullet hits a something, destroy it
     void OnTriggerEnter2D(Collider2D other) 
     {
-        if (other.gameObject.tag != "Player" || other.gameObject.tag != "Gun") {
-            //depending on what the bullet collides with it'll behave differently
-            switch(other.gameObject.tag){
-                //if it hits a enemy it applies a force to said enemy and does damage
-                case "Enemy":
-                other.gameObject.GetComponent<EnemyController>().DamageEnemy(damage);
-                Vector3 bulletdir = Quaternion.AngleAxis(transform.rotation.eulerAngles.z, Vector3.forward) * Vector3.up;
-                other.gameObject.GetComponent<Rigidbody2D>().AddForce(bulletdir * bulletForce);
-                Destroy(gameObject);
-                break;
-                default:
-                Destroy(gameObject);
-                break;
-            }
-        }
-        
-    }
+        switch(other.gameObject.tag){
+            //if it hits a enemy it applies a force to said enemy and does damage
+            case "Enemy":
+            GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
+            other.gameObject.GetComponent<EnemyController>().DamageEnemy(damage);
+            Vector3 bulletdir = Quaternion.AngleAxis(transform.rotation.eulerAngles.z, Vector3.forward) * Vector3.up;
+            other.gameObject.GetComponent<Rigidbody2D>().AddForce(bulletdir * bulletForce);
+            Destroy(effect, 0.5f);
+            Destroy(gameObject);
+            break;
+            
+            case "RoomExit":
+            break;
 
-    // Destroy bullet if out of frame
-    void OnBecameInvisible() 
-    {
-        Destroy(gameObject);    
+            case "Player":
+            break;
+
+            case "Gun":
+            break;
+
+            case "Item":
+            break;
+            
+            default:
+            GameObject effect2 = Instantiate(hitEffect, transform.position, Quaternion.identity);
+            Destroy(effect2, 0.5f);
+            Destroy(gameObject);
+            break;
+        }
     }
 }

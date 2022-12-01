@@ -7,6 +7,7 @@ public class EnemyBullet: MonoBehaviour
     public float bulletSpeed;
     public int damage;
     private Vector3 playerDirection;
+    public GameObject hitEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -14,6 +15,10 @@ public class EnemyBullet: MonoBehaviour
         // Done in start otherwise bullet would follow player
         playerDirection = PlayerMovement.instance.transform.position - transform.position;
         playerDirection.Normalize();
+        //Adjust to Scale enemy bullet damage
+        //Currently difficulty Factor is a linear increase of 1 each room so in this case
+        //would change enemy bullet damage by +1 every ~5 rooms
+        damage = 1 + Mathf.RoundToInt((float)(0.2 * PlayerStats.instance.difficultyFactor));
     }
 
     // Update is called once per frame
@@ -22,13 +27,30 @@ public class EnemyBullet: MonoBehaviour
         transform.position += playerDirection * bulletSpeed * Time.deltaTime;
     }
 
-    private void OnTriggerEnter2D(Collider2D other) 
+    void OnTriggerEnter2D(Collider2D other) 
     {
         switch(other.gameObject.tag){
             case "Player":
-                PlayerStats.instance.DamagePlayer(damage);
-                Destroy(gameObject);
-                break;
+            GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
+            PlayerStats.instance.DamagePlayer(damage);
+            Destroy(effect, 0.5f);
+            Destroy(gameObject);
+            break;
+
+            case "RoomExit":
+            break;
+
+            case "Gun":
+            break;
+
+            case "Item":
+            break;
+
+            default:
+            GameObject effect2 = Instantiate(hitEffect, transform.position, Quaternion.identity);
+            Destroy(effect2, 0.5f);
+            Destroy(gameObject);
+            break;
         }
     }
 }

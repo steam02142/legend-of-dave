@@ -9,7 +9,10 @@ public class PlayerStats : MonoBehaviour
     public int currentHealth;
     public int maxHealth;
 
+    public int difficultyFactor;
 
+    public CapsuleCollider2D collider1;
+ 
     void Awake() 
     {
         instance = this;    
@@ -19,6 +22,8 @@ public class PlayerStats : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
+
+        difficultyFactor = 1; //Set baseline difficulty factor
 
         UIController.instance.healthBar.maxValue = maxHealth;
         UIController.instance.healthBar.value = currentHealth;
