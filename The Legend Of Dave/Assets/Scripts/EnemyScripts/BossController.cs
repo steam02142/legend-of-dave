@@ -18,6 +18,12 @@ public class BossController : MonoBehaviour
 
     public int health = 100;
 
+    public GameObject point1;
+    public GameObject point2;
+    public GameObject point3;
+    public GameObject point4;
+
+
     //bool for if the player is facing right (saving on resources)
     bool facingRight = true;
 
@@ -67,6 +73,7 @@ public class BossController : MonoBehaviour
             // Shooting
             if (actions[currentAction].shouldShoot)
             {
+                shootDirection();
                 shotCounter -= Time.deltaTime;
                 if (shotCounter <= 0)
                 {
@@ -105,7 +112,25 @@ public class BossController : MonoBehaviour
 
 
 
+    void shootDirection ()
+    {
+        if (!facingRight)
+        {
+            point1.transform.rotation = Quaternion.Euler(0, 0, -180);
+            point2.transform.rotation = Quaternion.Euler(0, 0, 0);
+            point3.transform.rotation = Quaternion.Euler(0, 0, -270);
+            point4.transform.rotation = Quaternion.Euler(0, 0, -90);
 
+        }
+        else
+        {
+            point1.transform.rotation = Quaternion.Euler(0, 0, 0); 
+            point2.transform.rotation = Quaternion.Euler(0, 0, -180);
+            point3.transform.rotation = Quaternion.Euler(0, 0, -270);
+            point4.transform.rotation = Quaternion.Euler(0, 0, -90);
+
+        }
+    }
 
 
 
