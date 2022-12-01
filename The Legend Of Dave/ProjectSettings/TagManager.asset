@@ -8,6 +8,10 @@ TagManager:
   - Enemy
   - Gun
   - Item
+  - Boss
+  - Walls
+  - Floor
+  - Bullet
   layers:
   - Default
   - TransparentFX
