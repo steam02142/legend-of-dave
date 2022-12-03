@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireBullets : MonoBehaviour
+public class ScatterShot : MonoBehaviour
 {
-    public static FireBullets instance;
+    public static ScatterShot instance;
 
     [SerializeField] private int bulletsAmount = 10;
 
