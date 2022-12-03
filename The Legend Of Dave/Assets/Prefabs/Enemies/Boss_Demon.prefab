@@ -204,7 +204,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.5074303}
@@ -230,6 +230,8 @@ MonoBehaviour:
     shouldPatrol: 0
     patrolPointToMoveTo: {fileID: 0}
     shouldShoot: 0
+    spiralShot: 0
+    roundShot: 0
     bullet: {fileID: 7153716513993645115, guid: fdfe5162aee0016449df197286bc0557, type: 3}
     timeBetweenShots: 0
     shootingPoints: []
@@ -240,6 +242,8 @@ MonoBehaviour:
     shouldPatrol: 0
     patrolPointToMoveTo: {fileID: 0}
     shouldShoot: 1
+    spiralShot: 0
+    roundShot: 0
     bullet: {fileID: 7153716513993645115, guid: fdfe5162aee0016449df197286bc0557, type: 3}
     timeBetweenShots: 0.5
     shootingPoints:
@@ -250,6 +254,12 @@ MonoBehaviour:
   rb2d: {fileID: 1866339498}
   animator: {fileID: 1654448507490593937}
   health: 100
+  point1: {fileID: 0}
+  point2: {fileID: 0}
+  point3: {fileID: 0}
+  point4: {fileID: 0}
+  fireBullets: {fileID: 0}
+  fireSpiral: {fileID: 0}
 --- !u!95 &1654448507490593937
 Animator:
   serializedVersion: 4
