@@ -31,6 +31,19 @@ public class Load : MonoBehaviour
             Debug.Log("bad collider detected BEEEEP BOOP");
             return;
         }
+        if (isDead) {
+            PlayerPrefs.SetInt("lastRoom", prevRoom);
+            sceneToLoad = 18; //The death room
+
+            //Load next Scene
+            SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Additive);
+
+            //Move player to 0 0 0 
+            PlayerMovement.instance.transform.position = new Vector3 (0, 0, 0);
+
+            //Reset Difficulty Scaling
+            PlayerStats.instance.difficultyFactor = 1;
+        }
         enemyCheck = GameObject.FindGameObjectsWithTag("Enemy");
         if (!loaded && other.tag == "Player" && enemyCheck.Length == 0)
         {

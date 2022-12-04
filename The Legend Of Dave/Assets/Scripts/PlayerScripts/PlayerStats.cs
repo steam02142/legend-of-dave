@@ -13,7 +13,11 @@ public class PlayerStats : MonoBehaviour
 
     public CapsuleCollider2D collider1;
 
-    public Object roomExit;
+    public GameObject roomExit;
+
+    public Load scriptLoad;
+
+    public Vector3 exitLocation;
  
     void Awake() 
     {
@@ -47,7 +51,8 @@ public class PlayerStats : MonoBehaviour
         if (currentHealth <= 0)
         {
             //PlayerMovement.instance.gameObject.SetActive(false);
-            
+            scriptLoad.isDead = true;
+            transform.position = exitLocation;
         }
 
         // Update Health UI
@@ -71,6 +76,8 @@ public class PlayerStats : MonoBehaviour
 
     public void updateExit(){
         roomExit = GameObject.Find("Triangle");
+        scriptLoad = roomExit.GetComponent<Load>();
+        exitLocation = roomExit.transform.position;
         //Debug.Log("Exit has been updated");
     }
 }
