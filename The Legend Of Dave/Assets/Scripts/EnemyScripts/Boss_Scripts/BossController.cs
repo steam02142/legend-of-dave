@@ -26,6 +26,9 @@ public class BossController : MonoBehaviour
     public ScatterShot fireBullets;
     public FireSpiral fireSpiral;
 
+    // Has the boss seen the player
+    bool playerSeen = false;
+
     //bool for if the player is facing right (saving on resources)
     bool facingRight = true;
 
@@ -46,8 +49,13 @@ public class BossController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
+        if (Vector2.Distance(transform.position, PlayerMovement.instance.transform.position) < 7)
+        {
+           playerSeen = true; 
+        }
         // If we are currently in an action
-        if (actionDuration > 0)
+        if (actionDuration > 0 && playerSeen)
         {
             // Decrease current action duration once per second
             actionDuration -= Time.deltaTime;
