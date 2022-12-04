@@ -38,6 +38,6 @@ public class Unload : MonoBehaviour
 
             Destroy(gameObject);
         }
-        
+        PlayerStats.instance.updateExit();
     }
 }

@@ -66,8 +66,9 @@ public class PlayerStats : MonoBehaviour
         {
             scriptLoad.isDead = true;
             transform.position = exitLocation;
-            PlayerMovement.instance.gameObject.SetActive(false);
+            //PlayerMovement.instance.gameObject.SetActive(false);
             //play dying animation
+            //Disabling for now 
         }
         // Update Health UI
         UIController.instance.healthBar.value = currentHealth;

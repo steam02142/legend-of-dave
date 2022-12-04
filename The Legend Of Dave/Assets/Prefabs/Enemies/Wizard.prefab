@@ -148,7 +148,7 @@ MonoBehaviour:
   bullet: {fileID: 3111564539366532146, guid: 5ce020e9f0cd3134cbaeaaac7b23f9dc, type: 3}
   firePoint: {fileID: 1103594117469889986}
   fireRate: 0.5
-  shootRange: 0
+  shootRange: 8
   enemy: {fileID: 1192713976325884646}
   minRange: 4
 --- !u!95 &8494210537032118129

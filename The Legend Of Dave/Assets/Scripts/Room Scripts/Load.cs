@@ -18,11 +18,14 @@ public class Load : MonoBehaviour
 
     public bool isDead;
 
+    public int counter;
+
     private void Start() 
     {
         badcollider = PlayerStats.instance.collider1;
         isDead = false;
         PlayerStats.instance.updateExit();
+        counter = 0;
     }
 
     void OnTriggerEnter2D(Collider2D other) 
@@ -31,6 +34,11 @@ public class Load : MonoBehaviour
             Debug.Log("bad collider detected BEEEEP BOOP");
             return;
         }
+        if (counter >= 1) {
+            Debug.Log("Second load detected");
+            return;
+        }
+        enemyCheck = GameObject.FindGameObjectsWithTag("Enemy");
         if (isDead) {
             PlayerPrefs.SetInt("lastRoom", prevRoom);
             sceneToLoad = 18; //The death room
@@ -45,13 +53,13 @@ public class Load : MonoBehaviour
             PlayerStats.instance.difficultyFactor = 1;
 
             Debug.Log("player is dead");
-        }
-        enemyCheck = GameObject.FindGameObjectsWithTag("Enemy");
-        if (!loaded && other.tag == "Player" && enemyCheck.Length == 0)
+
+            counter += 1;
+        } else if (!loaded && other.tag == "Player" && enemyCheck.Length == 0)
         {
             PlayerPrefs.SetInt("lastRoom", prevRoom);
             // Random room logic
-            int randomNum = UniqueRandomInt(16, 16+1); //Should be to 15+1 atm. //can change for testing purposes
+            int randomNum = UniqueRandomInt(2, 15+1); //Should be to 15+1 atm. //can change for testing purposes
             randRoom = randomNum;
             sceneToLoad = randRoom;
 
@@ -65,7 +73,10 @@ public class Load : MonoBehaviour
 
             //Set difficulty increase upon going to new room
             PlayerStats.instance.difficultyFactor += 1;
+
+            counter += 1;
         }
+        PlayerStats.instance.updateExit();
     }
 
     public int UniqueRandomInt(int min, int max)
