@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+   [Header ("Health")]
     public static PlayerStats instance;
 
     public int currentHealth;
     public int maxHealth;
 
+    [Header ("Other")]
     public int difficultyFactor;
 
     public CapsuleCollider2D collider1;
@@ -18,10 +20,15 @@ public class PlayerStats : MonoBehaviour
     public Load scriptLoad;
 
     public Vector3 exitLocation;
- 
+
+    [Header ("iFrames")]
+    public float iFrames;
+    public float numberOfFlashes;
+    private SpriteRenderer spriteRend;
     void Awake() 
     {
-        instance = this;    
+        instance = this;
+        spriteRend = GetComponent<SpriteRenderer>();    
     }
 
     // Start is called before the first frame update
@@ -48,16 +55,34 @@ public class PlayerStats : MonoBehaviour
     {
         currentHealth -= damage;
 
-        if (currentHealth <= 0)
+        if (currentHealth > 0){
+            StartCoroutine(Invunerability());  
+        }
+        else
         {
-            //PlayerMovement.instance.gameObject.SetActive(false);
             scriptLoad.isDead = true;
             transform.position = exitLocation;
+            PlayerMovement.instance.gameObject.SetActive(false);
+            //play dying animation
         }
-
         // Update Health UI
         UIController.instance.healthBar.value = currentHealth;
         UIController.instance.healthText.text = currentHealth.ToString() + " / " + maxHealth.ToString();
+    }
+
+    private IEnumerator Invunerability(){
+        Physics2D.IgnoreLayerCollision(8,10, true);
+        Physics2D.IgnoreLayerCollision(8,11, true);
+        for (int i = 0; i < numberOfFlashes; i++)
+        {
+            spriteRend.color = new Color(0.4f, 0.4f, 0.4f, 0.5f);
+            yield return new WaitForSeconds(iFrames / (numberOfFlashes * 2));
+            spriteRend.color = Color.white;
+            yield return new WaitForSeconds(iFrames / (numberOfFlashes * 2));
+        }
+        Physics2D.IgnoreLayerCollision(8,10, false);
+        Physics2D.IgnoreLayerCollision(8,11, false);
+
     }
 
     public void HealPlayer(int healAmount)

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2424010958951572608}
   - component: {fileID: 2503020571185977077}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Crosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5093633517495429168}
   - component: {fileID: 7835474796356557}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrossHair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6643254710332493537}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 6643254710652396245}
   - component: {fileID: 6643254710652396241}
   - component: {fileID: 5858483780221068951}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -381,6 +381,10 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 0
   difficultyFactor: 0
+  collider1: {fileID: 0}
+  roomExit: {fileID: 0}
+  iFrames: 2
+  numberOfFlashes: 3
 --- !u!1 &6643254711006485079
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,7 +396,7 @@ GameObject:
   - component: {fileID: 6643254711006485076}
   - component: {fileID: 6643254711006485077}
   - component: {fileID: 6643254711006485074}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Gun
   m_TagString: GameController
   m_Icon: {fileID: 0}
@@ -489,7 +493,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6017165575822289632}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}

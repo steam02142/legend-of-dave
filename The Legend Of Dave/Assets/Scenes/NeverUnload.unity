@@ -802,6 +802,10 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5858483780221068951, guid: c31bd295430b2e24c80e0e12795a8adc, type: 3}
+      propertyPath: numberOfFlashes
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6643254710332493536, guid: c31bd295430b2e24c80e0e12795a8adc, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -821,6 +825,22 @@ PrefabInstance:
     - target: {fileID: 6643254710652396243, guid: c31bd295430b2e24c80e0e12795a8adc, type: 3}
       propertyPath: m_IsTrigger
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643254710652396246, guid: c31bd295430b2e24c80e0e12795a8adc, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643254710652396246, guid: c31bd295430b2e24c80e0e12795a8adc, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643254710652396246, guid: c31bd295430b2e24c80e0e12795a8adc, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643254710652396246, guid: c31bd295430b2e24c80e0e12795a8adc, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6643254710652396247, guid: c31bd295430b2e24c80e0e12795a8adc, type: 3}
       propertyPath: m_RootOrder
