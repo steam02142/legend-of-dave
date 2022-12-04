@@ -43,6 +43,8 @@ public class Load : MonoBehaviour
 
             //Reset Difficulty Scaling
             PlayerStats.instance.difficultyFactor = 1;
+
+            Debug.Log("player is dead");
         }
         enemyCheck = GameObject.FindGameObjectsWithTag("Enemy");
         if (!loaded && other.tag == "Player" && enemyCheck.Length == 0)
