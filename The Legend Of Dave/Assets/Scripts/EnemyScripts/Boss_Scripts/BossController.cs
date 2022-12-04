@@ -23,6 +23,8 @@ public class BossController : MonoBehaviour
     public GameObject point3;
     public GameObject point4;
 
+    public ScatterShot fireBullets;
+    public FireSpiral fireSpiral;
 
     //bool for if the player is facing right (saving on resources)
     bool facingRight = true;
@@ -89,6 +91,30 @@ public class BossController : MonoBehaviour
                     {
                         Instantiate(actions[currentAction].bullet, transform.position, transform.rotation);
                     }
+                }
+            }
+
+            if (actions[currentAction].spiralShot)
+            {
+                
+                shotCounter -= Time.deltaTime;
+                if (shotCounter <= 0)
+                {
+                    shotCounter = actions[currentAction].timeBetweenShots;
+
+                    FireSpiral.instance.Fire();
+                }
+            }
+
+            if (actions[currentAction].scatterShot)
+            {
+
+                shotCounter -= Time.deltaTime;
+                if (shotCounter <= 0)
+                {
+                    shotCounter = actions[currentAction].timeBetweenShots;
+
+                    ScatterShot.instance.Fire();
                 }
             }
         }
@@ -206,6 +232,8 @@ public class BossAction
     
 
     public bool shouldShoot;
+    public bool spiralShot;
+    public bool scatterShot;
     public GameObject bullet;
     public float timeBetweenShots;
     public Transform[] shootingPoints;
