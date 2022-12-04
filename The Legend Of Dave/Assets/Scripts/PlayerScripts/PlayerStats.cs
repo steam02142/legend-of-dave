@@ -25,6 +25,10 @@ public class PlayerStats : MonoBehaviour
     public float iFrames;
     public float numberOfFlashes;
     private SpriteRenderer spriteRend;
+
+    [Header ("Currency")]
+    public int coins;
+
     void Awake() 
     {
         instance = this;
@@ -104,5 +108,20 @@ public class PlayerStats : MonoBehaviour
         scriptLoad = roomExit.GetComponent<Load>();
         exitLocation = roomExit.transform.position;
         //Debug.Log("Exit has been updated");
+    }
+
+    public void coinPickup (int amount)
+    {
+        coins += amount;
+    }
+
+    public void spendCoins (int amount)
+    {
+       coins -= amount; 
+
+       if (coins < 0)
+       {
+            coins = 0;
+       }
     }
 }
