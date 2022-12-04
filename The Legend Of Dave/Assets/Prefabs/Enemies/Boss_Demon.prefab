@@ -98,6 +98,8 @@ GameObject:
   - component: {fileID: 4655958645276813181}
   - component: {fileID: 1760436038}
   - component: {fileID: 1654448507490593937}
+  - component: {fileID: 1927115116}
+  - component: {fileID: 1927115117}
   m_Layer: 10
   m_Name: Boss_Demon
   m_TagString: Boss
@@ -204,7 +206,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.5074303}
@@ -231,7 +233,7 @@ MonoBehaviour:
     patrolPointToMoveTo: {fileID: 0}
     shouldShoot: 0
     spiralShot: 0
-    roundShot: 0
+    scatterShot: 0
     bullet: {fileID: 7153716513993645115, guid: fdfe5162aee0016449df197286bc0557, type: 3}
     timeBetweenShots: 0
     shootingPoints: []
@@ -243,7 +245,39 @@ MonoBehaviour:
     patrolPointToMoveTo: {fileID: 0}
     shouldShoot: 1
     spiralShot: 0
-    roundShot: 0
+    scatterShot: 0
+    bullet: {fileID: 7153716513993645115, guid: fdfe5162aee0016449df197286bc0557, type: 3}
+    timeBetweenShots: 0.5
+    shootingPoints:
+    - {fileID: 3903909116346222168}
+    - {fileID: 4645368297306229379}
+    - {fileID: 3723366953489998763}
+    - {fileID: 8402877717254658777}
+  - actionLength: 2
+    shouldMove: 0
+    shouldChasePlayer: 1
+    moveSpeed: 4
+    shouldPatrol: 0
+    patrolPointToMoveTo: {fileID: 0}
+    shouldShoot: 0
+    spiralShot: 1
+    scatterShot: 0
+    bullet: {fileID: 7153716513993645115, guid: fdfe5162aee0016449df197286bc0557, type: 3}
+    timeBetweenShots: 0.1
+    shootingPoints:
+    - {fileID: 3903909116346222168}
+    - {fileID: 4645368297306229379}
+    - {fileID: 3723366953489998763}
+    - {fileID: 8402877717254658777}
+  - actionLength: 2
+    shouldMove: 0
+    shouldChasePlayer: 0
+    moveSpeed: 4
+    shouldPatrol: 0
+    patrolPointToMoveTo: {fileID: 0}
+    shouldShoot: 0
+    spiralShot: 0
+    scatterShot: 1
     bullet: {fileID: 7153716513993645115, guid: fdfe5162aee0016449df197286bc0557, type: 3}
     timeBetweenShots: 0.5
     shootingPoints:
@@ -254,12 +288,12 @@ MonoBehaviour:
   rb2d: {fileID: 1866339498}
   animator: {fileID: 1654448507490593937}
   health: 100
-  point1: {fileID: 0}
-  point2: {fileID: 0}
-  point3: {fileID: 0}
-  point4: {fileID: 0}
-  fireBullets: {fileID: 0}
-  fireSpiral: {fileID: 0}
+  point1: {fileID: 7391067140692928978}
+  point2: {fileID: 121718644917929695}
+  point3: {fileID: 6925185814081673646}
+  point4: {fileID: 7596242355873696595}
+  fireBullets: {fileID: 1927115116}
+  fireSpiral: {fileID: 1927115117}
 --- !u!95 &1654448507490593937
 Animator:
   serializedVersion: 4
@@ -280,6 +314,34 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1927115116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662212893189277140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 348734dfe20ea054c9170ee399c456ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletsAmount: 20
+  startAngle: 0
+  endAngle: 360
+--- !u!114 &1927115117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662212893189277140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8973b429915faff4b9e7394c400e3da8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  angleBetweenShots: 20
 --- !u!1 &6925185814081673646
 GameObject:
   m_ObjectHideFlags: 0
