@@ -12,6 +12,8 @@ public class PlayerStats : MonoBehaviour
     public int difficultyFactor;
 
     public CapsuleCollider2D collider1;
+
+    public Object roomExit;
  
     void Awake() 
     {
@@ -28,6 +30,8 @@ public class PlayerStats : MonoBehaviour
         UIController.instance.healthBar.maxValue = maxHealth;
         UIController.instance.healthBar.value = currentHealth;
         UIController.instance.healthText.text = currentHealth.ToString() + " / " + maxHealth.ToString();
+
+        updateExit();
     }
 
     // Update is called once per frame
@@ -42,7 +46,8 @@ public class PlayerStats : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            PlayerMovement.instance.gameObject.SetActive(false);
+            //PlayerMovement.instance.gameObject.SetActive(false);
+            
         }
 
         // Update Health UI
@@ -62,5 +67,10 @@ public class PlayerStats : MonoBehaviour
         // Update Health UI
         UIController.instance.healthBar.value = currentHealth;
         UIController.instance.healthText.text = currentHealth.ToString() + " / " + maxHealth.ToString();
+    }
+
+    public void updateExit(){
+        roomExit = GameObject.Find("Triangle");
+        //Debug.Log("Exit has been updated");
     }
 }

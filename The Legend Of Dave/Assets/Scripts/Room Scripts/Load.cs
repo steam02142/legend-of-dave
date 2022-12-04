@@ -16,9 +16,13 @@ public class Load : MonoBehaviour
 
     private Collider2D badcollider;
 
+    public bool isDead;
+
     private void Start() 
     {
         badcollider = PlayerStats.instance.collider1;
+        isDead = false;
+        PlayerStats.instance.updateExit();
     }
 
     void OnTriggerEnter2D(Collider2D other) 
