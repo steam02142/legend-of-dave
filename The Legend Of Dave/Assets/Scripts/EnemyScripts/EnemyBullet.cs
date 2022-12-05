@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyBullet: MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class EnemyBullet: MonoBehaviour
     public int damage;
     private Vector3 playerDirection;
     public GameObject hitEffect;
+
+    private int spawnedRoom;
+
+    private int currentRoom;
 
     // Start is called before the first frame update
     void Start()
@@ -19,12 +24,19 @@ public class EnemyBullet: MonoBehaviour
         //Currently difficulty Factor is a linear increase of 1 each room so in this case
         //would change enemy bullet damage by +1 every ~5 rooms
         damage = 1 + Mathf.RoundToInt((float)(0.2 * PlayerStats.instance.difficultyFactor));
+        //Save which scene bullet spawned in, so we know to delete it when we switch rooms
+        spawnedRoom = SceneManager.GetSceneAt(1).buildIndex;
+        currentRoom = SceneManager.GetSceneAt(1).buildIndex;
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.position += playerDirection * bulletSpeed * Time.deltaTime;
+        currentRoom = SceneManager.GetSceneAt(1).buildIndex;
+        if (spawnedRoom != currentRoom) {
+            Destroy(gameObject);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other) 

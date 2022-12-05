@@ -16,6 +16,8 @@ public class UIController : MonoBehaviour
 
     public int newGameScene;
 
+    public Text Roomcount;
+
     void Awake() 
     {
         instance = this;    
