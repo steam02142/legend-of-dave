@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class BossBullet : MonoBehaviour
 {
@@ -11,18 +10,13 @@ public class BossBullet : MonoBehaviour
     public int damage;
     public GameObject hitEffect;
 
-    private int spawnedRoom;
-
-    private int currentRoom;
 
     // Start is called before the first frame update
     void Start()
     {
         // Move direction to the right 
         direction = transform.right;
-        direction.Normalize();
-        spawnedRoom = SceneManager.GetSceneAt(1).buildIndex;
-        currentRoom = SceneManager.GetSceneAt(1).buildIndex;
+        direction.Normalize();    
     }
 
     // Update is called once per frame
@@ -34,10 +28,6 @@ public class BossBullet : MonoBehaviour
         // Boss has been defeated, destroy bullets
         if (!BossController.instance.gameObject.activeInHierarchy)
         {
-            Destroy(gameObject);
-        }
-        currentRoom = SceneManager.GetSceneAt(1).buildIndex;
-        if (spawnedRoom != currentRoom) {
             Destroy(gameObject);
         }
     }

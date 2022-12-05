@@ -42,7 +42,6 @@ public class EnemyController : MonoBehaviour
         health = 100 * PlayerStats.instance.difficultyFactor;
         activated = false;
         touchDamage = 1 + Mathf.RoundToInt((float)(0.2 * PlayerStats.instance.difficultyFactor));
-        fireRate = (float)(0.5 + (0.02 * PlayerStats.instance.difficultyFactor));
     }
 
     // Update is called once per frame
@@ -114,6 +113,8 @@ public class EnemyController : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+
 
 
 
