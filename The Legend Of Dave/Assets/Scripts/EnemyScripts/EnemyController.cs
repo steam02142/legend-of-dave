@@ -57,32 +57,41 @@ public class EnemyController : MonoBehaviour
         }
         // If the player is within enemy sight follow the player
         if (Vector2.Distance(transform.position, PlayerMovement.instance.transform.position) > minRange)
+    {
+        if (PlayerMovement.instance.gameObject.activeInHierarchy)
         {
-            moveDirection = PlayerMovement.instance.transform.position - transform.position;
-        }
-        else 
-        {
-            // if you don't see the player, set movement to zero
-            moveDirection = Vector2.zero;
-        }
-
-        // Keep diagonal speed from increasing
-        moveDirection.Normalize();
-
-        rb.velocity = moveDirection * moveSpeed;
-
-        if (doesShoot && Vector2.Distance(transform.position, PlayerMovement.instance.transform.position) < shootRange)
-        {
-            fireCounter -= Time.deltaTime;
-
-            if (fireCounter <=0)
+            // If the player is within enemy sight follow the player
+            if (Vector2.Distance(transform.position, PlayerMovement.instance.transform.position) > minRange)
             {
-                fireCounter = fireRate;
-                Instantiate (bullet, firePoint.position, firePoint.rotation);
+                moveDirection = PlayerMovement.instance.transform.position - transform.position;
             }
-        }
+            else 
+            {
+                // if you don't see the player, set movement to zero
+                moveDirection = Vector2.zero;
+            }
 
-        Animations();
+            // Keep diagonal speed from increasing
+            moveDirection.Normalize();
+
+            rb.velocity = moveDirection * moveSpeed;
+
+            if (doesShoot && Vector2.Distance(transform.position, PlayerMovement.instance.transform.position) < shootRange)
+            {
+                fireCounter -= Time.deltaTime;
+                
+                if (fireCounter <=0)
+                {
+                    fireCounter = fireRate;
+                    Instantiate (bullet, firePoint.position, firePoint.rotation);
+                }
+            }
+
+            Animations();
+        }
+        
+
+        
     }
 
     void OnTriggerEnter2D(Collider2D other) {
