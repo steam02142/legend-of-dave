@@ -56,6 +56,9 @@ public class UIController : MonoBehaviour
         PlayerPrefs.SetInt("Counter", 0);
 
        Unload.instance.resetCounter();
+       PlayerMovement.instance.transform.position = new Vector3 (0, 0, 0);
+
+
         
     }
 
