@@ -15,6 +15,12 @@ public class PlayerStats : MonoBehaviour
 
     public CapsuleCollider2D collider1;
 
+    public GameObject roomExit;
+
+    public Load scriptLoad;
+
+    public Vector3 exitLocation;
+
     [Header ("iFrames")]
     public float iFrames;
     public float numberOfFlashes;
