@@ -12,6 +12,9 @@ public class UIController : MonoBehaviour
     public Text healthText;
 
     public Text coinText;
+
+    public Text Roomcount;
+
     public GameObject deathScreen;
 
     public int newGameScene;

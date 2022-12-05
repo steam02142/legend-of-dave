@@ -158,6 +158,7 @@ MonoBehaviour:
   healthBar: {fileID: 86407890}
   healthText: {fileID: 1614552229}
   coinText: {fileID: 763903740}
+  Roomcount: {fileID: 0}
   deathScreen: {fileID: 1251393839}
   newGameScene: 1
 --- !u!114 &28971831
