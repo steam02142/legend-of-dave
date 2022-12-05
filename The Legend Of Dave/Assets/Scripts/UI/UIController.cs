@@ -12,6 +12,8 @@ public class UIController : MonoBehaviour
 
     public Text coinText;
 
+    public Text Roomcount;
+
     void Awake() 
     {
         instance = this;    
