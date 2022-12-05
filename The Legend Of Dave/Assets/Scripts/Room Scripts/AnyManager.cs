@@ -34,6 +34,8 @@ public class AnyManager : MonoBehaviour
     {
         yield return null;
 
+        Debug.Log(scene);
+
         SceneManager.UnloadSceneAsync(scene);
     }
 }

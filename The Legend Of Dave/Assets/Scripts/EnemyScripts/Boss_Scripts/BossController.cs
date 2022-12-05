@@ -23,6 +23,11 @@ public class BossController : MonoBehaviour
     public GameObject point3;
     public GameObject point4;
 
+    public ScatterShot fireBullets;
+    public FireSpiral fireSpiral;
+
+    // Has the boss seen the player
+    bool playerSeen = false;
 
     //bool for if the player is facing right (saving on resources)
     bool facingRight = true;
@@ -44,8 +49,13 @@ public class BossController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
+        if (Vector2.Distance(transform.position, PlayerMovement.instance.transform.position) < 7)
+        {
+           playerSeen = true; 
+        }
         // If we are currently in an action
-        if (actionDuration > 0)
+        if (actionDuration > 0 && playerSeen)
         {
             // Decrease current action duration once per second
             actionDuration -= Time.deltaTime;
@@ -89,6 +99,30 @@ public class BossController : MonoBehaviour
                     {
                         Instantiate(actions[currentAction].bullet, transform.position, transform.rotation);
                     }
+                }
+            }
+
+            if (actions[currentAction].spiralShot)
+            {
+                
+                shotCounter -= Time.deltaTime;
+                if (shotCounter <= 0)
+                {
+                    shotCounter = actions[currentAction].timeBetweenShots;
+
+                    FireSpiral.instance.Fire();
+                }
+            }
+
+            if (actions[currentAction].scatterShot)
+            {
+
+                shotCounter -= Time.deltaTime;
+                if (shotCounter <= 0)
+                {
+                    shotCounter = actions[currentAction].timeBetweenShots;
+
+                    ScatterShot.instance.Fire();
                 }
             }
         }
@@ -206,6 +240,8 @@ public class BossAction
     
 
     public bool shouldShoot;
+    public bool spiralShot;
+    public bool scatterShot;
     public GameObject bullet;
     public float timeBetweenShots;
     public Transform[] shootingPoints;

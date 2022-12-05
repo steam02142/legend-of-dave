@@ -30,43 +30,80 @@ public class EnemyController : MonoBehaviour
 
     public float minRange;
 
+    public float activationRange;
+
+    public bool activated;
+
+    public int touchDamage;
+
     // Start is called before the first frame update
     void Start()
     {
-        health = 100 * PlayerStats.instance.difficultyFactor;
+        health = (int)((100 * (PlayerStats.instance.difficultyFactor * 0.25)) + 75);
+        activated = false;
+        touchDamage = 1 + Mathf.RoundToInt((float)(0.2 * PlayerStats.instance.difficultyFactor));
+        fireRate = (float)(0.5 + (0.02 * PlayerStats.instance.difficultyFactor));
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {   
+        if (activated) {
+            //do nothing
+        } else {
+            //Check if enemy should be awoken
+            if (Vector2.Distance (transform.position, PlayerMovement.instance.transform.position) < activationRange) {
+                activated = true;
+            }
+        }
         // If the player is within enemy sight follow the player
         if (Vector2.Distance(transform.position, PlayerMovement.instance.transform.position) > minRange)
         {
-            moveDirection = PlayerMovement.instance.transform.position - transform.position;
+            if (PlayerMovement.instance.gameObject.activeInHierarchy)
+            {
+                // If the player is within enemy sight follow the player
+                if (Vector2.Distance(transform.position, PlayerMovement.instance.transform.position) > minRange)
+                {
+                    moveDirection = PlayerMovement.instance.transform.position - transform.position;
+                }
+                else 
+                {
+                    // if you don't see the player, set movement to zero
+                    moveDirection = Vector2.zero;
+                }
+
+                // Keep diagonal speed from increasing
+                moveDirection.Normalize();
+
+                rb.velocity = moveDirection * moveSpeed;
+
+               
+
+                Animations();
+            }
         }
-        else 
-        {
-            // if you don't see the player, set movement to zero
-            moveDirection = Vector2.zero;
-        }
 
-        // Keep diagonal speed from increasing
-        moveDirection.Normalize();
-
-        rb.velocity = moveDirection * moveSpeed;
-
-        if (doesShoot && Vector2.Distance(transform.position, PlayerMovement.instance.transform.position) < shootRange)
+         if (doesShoot && Vector2.Distance(transform.position, PlayerMovement.instance.transform.position) < shootRange)
         {
             fireCounter -= Time.deltaTime;
-
+            
             if (fireCounter <=0)
             {
                 fireCounter = fireRate;
                 Instantiate (bullet, firePoint.position, firePoint.rotation);
             }
         }
+        if (PlayerStats.instance.currentHealth <= 0) {
+            gameObject.SetActive(false);
+        }
+        
+    }
 
-        Animations();
+    void OnTriggerEnter2D(Collider2D other) 
+    {
+        if (other.gameObject.tag == "Player") {
+            PlayerStats.instance.DamagePlayer(touchDamage);
+        }
     }
 
     public void DamageEnemy (int damage)
@@ -75,6 +112,8 @@ public class EnemyController : MonoBehaviour
 
         if (health <= 0)
         {
+            PlayerStats.instance.coinPickup(1);
+            UIController.instance.coinText.text = "Coins: " + PlayerStats.instance.coins.ToString();
             Destroy(gameObject);
         }
     }

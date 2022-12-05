@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
@@ -9,6 +10,22 @@ public class UIController : MonoBehaviour
 
     public Slider healthBar;
     public Text healthText;
+
+    public Text coinText;
+
+    public Text Roomcount;
+
+    public Text healthUpgradeCost;
+
+    public Text damageUpgradeCost;
+
+    public Text speedUpgradeCost;
+
+    public Text deadCoinCount;
+
+    public GameObject deathScreen;
+
+    public int newGameScene;
 
     void Awake() 
     {
@@ -27,4 +44,33 @@ public class UIController : MonoBehaviour
     {
         
     }
+
+    public void NewGame()
+    {
+        SceneManager.LoadSceneAsync(newGameScene, LoadSceneMode.Additive);
+
+        instance.deathScreen.SetActive(false);
+
+        int currentRoom = PlayerPrefs.GetInt("currentRoom");
+
+        if (PlayerPrefs.GetInt("counter") == 0)
+        {
+            currentRoom = 1;
+        }
+
+        int currentScene = SceneManager.GetSceneAt(1).buildIndex;
+
+        AnyManager.anyManager.UnloadScene(currentScene);
+
+        //PlayerMovement.instance.gameObject.SetActive(true);
+        PlayerMovement.instance.UnFreezePlayer();
+
+        PlayerPrefs.SetInt("Counter", 0);
+
+        Unload.instance.resetCounter();
+        PlayerMovement.instance.transform.position = new Vector3 (0, 0, 0);
+
+        PlayerStats.instance.newStart();
+    }
+
 }

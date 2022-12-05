@@ -16,18 +16,25 @@ public class Load : MonoBehaviour
 
     private Collider2D badcollider;
 
+    static public int counter = 0;
+
     private void Start() 
     {
         badcollider = PlayerStats.instance.collider1;
+        counter = 0;
+        PlayerPrefs.SetInt("counter", counter);
     }
 
     void OnTriggerEnter2D(Collider2D other) 
     {
         if (other == badcollider) {
-            Debug.Log("bad collider detected BEEEEP BOOP");
+            return;
+        }
+        if (counter >= 1) {
             return;
         }
         enemyCheck = GameObject.FindGameObjectsWithTag("Enemy");
+
         if (!loaded && other.tag == "Player" && enemyCheck.Length == 0)
         {
             PlayerPrefs.SetInt("lastRoom", prevRoom);
@@ -37,8 +44,10 @@ public class Load : MonoBehaviour
             sceneToLoad = randRoom;
 
 
+            PlayerPrefs.SetInt("currentRoom", sceneToLoad);
             // Load next scene
             SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Additive);
+
             
 
             // Move player to (0, 0, 0)
@@ -46,6 +55,10 @@ public class Load : MonoBehaviour
 
             //Set difficulty increase upon going to new room
             PlayerStats.instance.difficultyFactor += 1;
+
+            counter += 1;
+            PlayerStats.instance.roomCount += 1;
+            UIController.instance.Roomcount.text = "Room " + PlayerStats.instance.roomCount.ToString();
         }
     }
 
@@ -59,5 +72,7 @@ public class Load : MonoBehaviour
         prevRoom = val;
         return val;
     }
+
+
 
 }
