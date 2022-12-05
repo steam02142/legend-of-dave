@@ -46,6 +46,9 @@ public class EnemyBullet: MonoBehaviour
             case "Item":
             break;
 
+            case "Enemy":
+            break;
+
             default:
             GameObject effect2 = Instantiate(hitEffect, transform.position, Quaternion.identity);
             Destroy(effect2, 0.5f);

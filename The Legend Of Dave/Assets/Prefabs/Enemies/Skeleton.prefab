@@ -149,6 +149,8 @@ MonoBehaviour:
   shootRange: 0
   enemy: {fileID: 0}
   minRange: 0
+  activationRange: 20
+  activated: 0
 --- !u!95 &4974125991266432299
 Animator:
   serializedVersion: 4

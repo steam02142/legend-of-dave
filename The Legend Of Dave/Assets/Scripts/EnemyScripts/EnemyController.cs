@@ -30,15 +30,31 @@ public class EnemyController : MonoBehaviour
 
     public float minRange;
 
+    public float activationRange;
+
+    public bool activated;
+
+    public int touchDamage;
+
     // Start is called before the first frame update
     void Start()
     {
         health = 100 * PlayerStats.instance.difficultyFactor;
+        activated = false;
+        touchDamage = 1 + Mathf.RoundToInt((float)(0.2 * PlayerStats.instance.difficultyFactor));
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {   
+        if (activated) {
+            //do nothing
+        } else {
+            //Check if enemy should be awoken
+            if (Vector2.Distance (transform.position, PlayerMovement.instance.transform.position) < activationRange) {
+                activated = true;
+            }
+        }
         // If the player is within enemy sight follow the player
         if (Vector2.Distance(transform.position, PlayerMovement.instance.transform.position) > minRange)
         {
@@ -69,12 +85,20 @@ public class EnemyController : MonoBehaviour
         Animations();
     }
 
+    void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.tag == "Player") {
+            PlayerStats.instance.DamagePlayer(touchDamage);
+        }
+    }
+
     public void DamageEnemy (int damage)
     {
         health -= damage;
 
         if (health <= 0)
         {
+            PlayerStats.instance.coinPickup(1);
+            UIController.instance.coinText.text = "Coins: " + PlayerStats.instance.coins.ToString();
             Destroy(gameObject);
         }
     }
