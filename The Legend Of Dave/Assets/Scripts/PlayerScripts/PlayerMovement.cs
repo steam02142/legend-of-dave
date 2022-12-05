@@ -74,5 +74,16 @@ public class PlayerMovement : MonoBehaviour
 
         facingRight = !facingRight;
     }
+
+    public void FreezePlayer()
+    {
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+    }
+
+    public void UnFreezePlayer ()
+    {
+        rb.constraints = RigidbodyConstraints2D.None;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
 }
 

@@ -62,12 +62,13 @@ public class UIController : MonoBehaviour
 
         AnyManager.anyManager.UnloadScene(currentScene);
 
-        PlayerMovement.instance.gameObject.SetActive(true);
+        //PlayerMovement.instance.gameObject.SetActive(true);
+        PlayerMovement.instance.UnFreezePlayer();
 
         PlayerPrefs.SetInt("Counter", 0);
 
-       Unload.instance.resetCounter();
-       PlayerMovement.instance.transform.position = new Vector3 (0, 0, 0);
+        Unload.instance.resetCounter();
+        PlayerMovement.instance.transform.position = new Vector3 (0, 0, 0);
 
         PlayerStats.instance.newStart();
     }

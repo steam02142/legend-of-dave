@@ -88,9 +88,11 @@ public class PlayerStats : MonoBehaviour
     public void DamagePlayer (int damage)
     {
         currentHealth -= damage;
+        // If player died
         if (currentHealth <= 0){
             //StartCoroutine(Invunerability());
-            PlayerMovement.instance.gameObject.SetActive(false);
+            //PlayerMovement.instance.gameObject.SetActive(false);
+            PlayerMovement.instance.FreezePlayer();
             Cursor.visible = true;
             //play dying animation
             //Disabling for now 
@@ -103,14 +105,14 @@ public class PlayerStats : MonoBehaviour
         }
         else
         {
-            //StartCoroutine(Invunerability());          
+            StartCoroutine(Invunerability());          
         }
         // Update Health UI
         UIController.instance.healthBar.value = currentHealth;
         UIController.instance.healthText.text = currentHealth.ToString() + " / " + maxHealth.ToString();
     }
 
-    /*
+    
     private IEnumerator Invunerability(){
         Physics2D.IgnoreLayerCollision(8,10, true);
         Physics2D.IgnoreLayerCollision(8,11, true);
@@ -125,7 +127,7 @@ public class PlayerStats : MonoBehaviour
         Physics2D.IgnoreLayerCollision(8,11, false);
 
     }
-    */
+    
     
 
     public void HealPlayer(int healAmount)
