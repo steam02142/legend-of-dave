@@ -23,6 +23,8 @@ public class PlayerStats : MonoBehaviour
     [Header ("Currency")]
     public int coins;
 
+    public int roomCount;
+
     void Awake() 
     {
         instance = this;
@@ -40,6 +42,8 @@ public class PlayerStats : MonoBehaviour
         UIController.instance.healthBar.value = currentHealth;
         UIController.instance.healthText.text = currentHealth.ToString() + " / " + maxHealth.ToString();
 
+        roomCount = 0;
+
     }
 
     // Update is called once per frame
@@ -51,23 +55,24 @@ public class PlayerStats : MonoBehaviour
     public void DamagePlayer (int damage)
     {
         currentHealth -= damage;
-
-        if (currentHealth > 0){
-            StartCoroutine(Invunerability());  
-        }
-        else
-        {
+        if (currentHealth <= 0){
             PlayerMovement.instance.gameObject.SetActive(false);
             //play dying animation
             //Disabling for now 
-
+            PlayerStats.instance.currentHealth = 0;
             UIController.instance.deathScreen.SetActive(true);
+            StartCoroutine(Invunerability());
+        }
+        else
+        {
+            StartCoroutine(Invunerability());          
         }
         // Update Health UI
         UIController.instance.healthBar.value = currentHealth;
         UIController.instance.healthText.text = currentHealth.ToString() + " / " + maxHealth.ToString();
     }
 
+    
     private IEnumerator Invunerability(){
         Physics2D.IgnoreLayerCollision(8,10, true);
         Physics2D.IgnoreLayerCollision(8,11, true);
@@ -82,6 +87,7 @@ public class PlayerStats : MonoBehaviour
         Physics2D.IgnoreLayerCollision(8,11, false);
 
     }
+    
 
     public void HealPlayer(int healAmount)
     {
@@ -115,5 +121,19 @@ public class PlayerStats : MonoBehaviour
     public void resetPlayer ()
     {
         currentHealth = maxHealth;
+    }
+
+    public void newStart() {
+        currentHealth = maxHealth;
+
+        difficultyFactor = 1; //Set baseline difficulty factor
+
+        UIController.instance.healthBar.maxValue = maxHealth;
+        UIController.instance.healthBar.value = currentHealth;
+        UIController.instance.healthText.text = currentHealth.ToString() + " / " + maxHealth.ToString();
+
+        roomCount = 0;
+
+        UIController.instance.Roomcount.text = "Room " + roomCount.ToString();
     }
 }

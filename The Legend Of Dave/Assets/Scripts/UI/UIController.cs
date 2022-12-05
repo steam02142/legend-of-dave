@@ -61,8 +61,7 @@ public class UIController : MonoBehaviour
        Unload.instance.resetCounter();
        PlayerMovement.instance.transform.position = new Vector3 (0, 0, 0);
 
-
-        
+        PlayerStats.instance.newStart();
     }
 
 }

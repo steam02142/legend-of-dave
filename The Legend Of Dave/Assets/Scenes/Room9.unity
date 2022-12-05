@@ -639,15 +639,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1192713976325884647, guid: dfe135fa9c86d594ba6828840e280b44, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1192713976325884647, guid: dfe135fa9c86d594ba6828840e280b44, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.703432
+      value: 8.55
       objectReference: {fileID: 0}
     - target: {fileID: 1192713976325884647, guid: dfe135fa9c86d594ba6828840e280b44, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.07556355
+      value: -1.91
       objectReference: {fileID: 0}
     - target: {fileID: 1192713976325884647, guid: dfe135fa9c86d594ba6828840e280b44, type: 3}
       propertyPath: m_LocalPosition.z
@@ -715,8 +715,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: 0
-  isDead: 0
-  counter: 0
 --- !u!61 &1508998815
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -803,7 +801,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1508998813}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.97, y: -0.14, z: 0}
+  m_LocalPosition: {x: 8.45, y: 0.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

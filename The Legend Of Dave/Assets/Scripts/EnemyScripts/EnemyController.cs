@@ -93,6 +93,9 @@ public class EnemyController : MonoBehaviour
                 Instantiate (bullet, firePoint.position, firePoint.rotation);
             }
         }
+        if (PlayerStats.instance.currentHealth <= 0) {
+            gameObject.SetActive(false);
+        }
         
     }
 

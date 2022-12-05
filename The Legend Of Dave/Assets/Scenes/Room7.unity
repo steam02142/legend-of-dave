@@ -3090,8 +3090,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: 0
-  isDead: 0
-  counter: 0
 --- !u!61 &508716873
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3178,7 +3176,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 508716871}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.97, y: -0.14, z: 0}
+  m_LocalPosition: {x: 43.96, y: 6.72, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

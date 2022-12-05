@@ -57,6 +57,8 @@ public class Load : MonoBehaviour
             PlayerStats.instance.difficultyFactor += 1;
 
             counter += 1;
+            PlayerStats.instance.roomCount += 1;
+            UIController.instance.Roomcount.text = "Room " + PlayerStats.instance.roomCount.ToString();
         }
     }
 
