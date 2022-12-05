@@ -39,7 +39,7 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health = 100 * PlayerStats.instance.difficultyFactor;
+        health = (int)((100 * (PlayerStats.instance.difficultyFactor * 0.25)) + 75);
         activated = false;
         touchDamage = 1 + Mathf.RoundToInt((float)(0.2 * PlayerStats.instance.difficultyFactor));
         fireRate = (float)(0.5 + (0.02 * PlayerStats.instance.difficultyFactor));

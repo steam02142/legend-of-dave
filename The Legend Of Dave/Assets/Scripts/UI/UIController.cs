@@ -15,6 +15,14 @@ public class UIController : MonoBehaviour
 
     public Text Roomcount;
 
+    public Text healthUpgradeCost;
+
+    public Text damageUpgradeCost;
+
+    public Text speedUpgradeCost;
+
+    public Text deadCoinCount;
+
     public GameObject deathScreen;
 
     public int newGameScene;

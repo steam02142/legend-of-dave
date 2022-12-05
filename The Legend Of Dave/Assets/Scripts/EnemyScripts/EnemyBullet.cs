@@ -29,6 +29,9 @@ public class EnemyBullet: MonoBehaviour
         //Save which scene bullet spawned in, so we know to delete it when we switch rooms
         spawnedRoom = SceneManager.GetSceneAt(1).buildIndex;
         currentRoom = SceneManager.GetSceneAt(1).buildIndex;
+
+        //Scale Bullet Speed. Max is 1.5x default speed in room 25
+        bulletSpeed = (float)(4 + (PlayerStats.instance.difficultyFactor * 0.08));
     }
 
     // Update is called once per frame

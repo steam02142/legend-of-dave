@@ -269,8 +269,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: 0
-  isDead: 0
-  counter: 0
 --- !u!61 &220634190
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2986,15 +2984,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2336107394525335741, guid: e1710e17b1671364bbab924daa0842c5, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2336107394525335741, guid: e1710e17b1671364bbab924daa0842c5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.163129
+      value: 5.91
       objectReference: {fileID: 0}
     - target: {fileID: 2336107394525335741, guid: e1710e17b1671364bbab924daa0842c5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.035729
+      value: 2.22
       objectReference: {fileID: 0}
     - target: {fileID: 2336107394525335741, guid: e1710e17b1671364bbab924daa0842c5, type: 3}
       propertyPath: m_LocalPosition.z
