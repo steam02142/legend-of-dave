@@ -222,7 +222,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: 0
-  isDead: 0
 --- !u!61 &1185270968
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2807,6 +2806,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1536461112}
     m_Modifications:
+    - target: {fileID: 1760436038, guid: 2720cbfd07b867947969345355982792, type: 3}
+      propertyPath: health
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760436038, guid: 2720cbfd07b867947969345355982792, type: 3}
+      propertyPath: actions.Array.data[1].moveSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760436038, guid: 2720cbfd07b867947969345355982792, type: 3}
+      propertyPath: actions.Array.data[2].moveSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760436038, guid: 2720cbfd07b867947969345355982792, type: 3}
+      propertyPath: actions.Array.data[3].moveSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760436038, guid: 2720cbfd07b867947969345355982792, type: 3}
+      propertyPath: actions.Array.data[1].shouldMove
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760436038, guid: 2720cbfd07b867947969345355982792, type: 3}
+      propertyPath: actions.Array.data[2].shouldMove
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760436038, guid: 2720cbfd07b867947969345355982792, type: 3}
+      propertyPath: actions.Array.data[3].shouldMove
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760436038, guid: 2720cbfd07b867947969345355982792, type: 3}
+      propertyPath: actions.Array.data[3].shouldPatrol
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760436038, guid: 2720cbfd07b867947969345355982792, type: 3}
+      propertyPath: actions.Array.data[1].shouldChasePlayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760436038, guid: 2720cbfd07b867947969345355982792, type: 3}
+      propertyPath: actions.Array.data[3].shouldChasePlayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 662212893189277140, guid: 2720cbfd07b867947969345355982792, type: 3}
       propertyPath: m_Name
       value: Boss_Demon

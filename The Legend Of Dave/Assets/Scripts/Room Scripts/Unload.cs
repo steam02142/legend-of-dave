@@ -23,7 +23,6 @@ public class Unload : MonoBehaviour
         counter++;
         PlayerPrefs.SetInt("Counter", counter);
 
-        Debug.Log("this is" + PlayerPrefs.GetInt("Counter"));
 
         if (PlayerPrefs.GetInt("Counter") <= 1)
         {
@@ -43,7 +42,7 @@ public class Unload : MonoBehaviour
 
             scene = PlayerPrefs.GetInt("lastRoom");
 
-            Debug.Log (scene);
+            Debug.Log(scene);
 
             AnyManager.anyManager.UnloadScene(scene);
 

@@ -22,6 +22,15 @@ public class Bullet1 : MonoBehaviour
             Destroy(effect, 0.5f);
             Destroy(gameObject);
             break;
+
+            case "Boss":
+            GameObject effect3 = Instantiate(hitEffect, transform.position, Quaternion.identity);
+            BossController.instance.DamageEnemy(damage + (PlayerStats.instance.damageUpsBought * 50));
+            Destroy(effect3, 0.5f);
+            Destroy(gameObject);
+            break;
+            
+
             
             case "RoomExit":
             break;
