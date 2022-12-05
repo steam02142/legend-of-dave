@@ -4,28 +4,17 @@ using UnityEngine;
 
 public class Unload : MonoBehaviour
 {
-    
-    public static Unload instance;
-
     public int scene;
 
     bool unloaded;
 
     static int counter = 0;
 
-    void Awake() 
-    {
-        instance = this;    
-    }
-
     private void OnTriggerEnter2D(Collider2D other) 
     {
         counter++;
-        PlayerPrefs.SetInt("Counter", counter);
 
-        Debug.Log("this is" + PlayerPrefs.GetInt("Counter"));
-
-        if (PlayerPrefs.GetInt("Counter") <= 1)
+        if (counter <= 1)
         {
             unloaded = true;
             
@@ -37,23 +26,18 @@ public class Unload : MonoBehaviour
             
         }
 
-        if (!unloaded && other.tag == "Player" && PlayerPrefs.GetInt("Counter") >= 2)
+        if (!unloaded && other.tag == "Player" && counter >= 2)
         {
             unloaded = true;
 
             scene = PlayerPrefs.GetInt("lastRoom");
 
-            Debug.Log (scene);
+            Debug.Log("did delete" + scene);
 
             AnyManager.anyManager.UnloadScene(scene);
 
             Destroy(gameObject);
         }
+        PlayerStats.instance.updateExit();
     }
-
-    public void resetCounter ()
-    {
-        counter = 0;
-    }
-
 }

@@ -16,26 +16,46 @@ public class Load : MonoBehaviour
 
     private Collider2D badcollider;
 
-    static public int counter = 0;
+    public bool isDead;
+
+    public int counter;
 
     private void Start() 
     {
         badcollider = PlayerStats.instance.collider1;
+        isDead = false;
+        PlayerStats.instance.updateExit();
         counter = 0;
-        PlayerPrefs.SetInt("counter", counter);
     }
 
     void OnTriggerEnter2D(Collider2D other) 
     {
         if (other == badcollider) {
+            Debug.Log("bad collider detected BEEEEP BOOP");
             return;
         }
         if (counter >= 1) {
+            Debug.Log("Second load detected");
             return;
         }
         enemyCheck = GameObject.FindGameObjectsWithTag("Enemy");
+        if (isDead) {
+            PlayerPrefs.SetInt("lastRoom", prevRoom);
+            sceneToLoad = 18; //The death room
 
-        if (!loaded && other.tag == "Player" && enemyCheck.Length == 0)
+            //Load next Scene
+            SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Additive);
+
+            //Move player to 0 0 0 
+            PlayerMovement.instance.transform.position = new Vector3 (0, 0, 0);
+
+            //Reset Difficulty Scaling
+            PlayerStats.instance.difficultyFactor = 1;
+
+            Debug.Log("player is dead");
+
+            counter += 1;
+        } else if (!loaded && other.tag == "Player" && enemyCheck.Length == 0)
         {
             PlayerPrefs.SetInt("lastRoom", prevRoom);
             // Random room logic
@@ -44,10 +64,8 @@ public class Load : MonoBehaviour
             sceneToLoad = randRoom;
 
 
-            PlayerPrefs.SetInt("currentRoom", sceneToLoad);
             // Load next scene
             SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Additive);
-
             
 
             // Move player to (0, 0, 0)
@@ -58,6 +76,7 @@ public class Load : MonoBehaviour
 
             counter += 1;
         }
+        PlayerStats.instance.updateExit();
     }
 
     public int UniqueRandomInt(int min, int max)
@@ -70,7 +89,5 @@ public class Load : MonoBehaviour
         prevRoom = val;
         return val;
     }
-
-
 
 }

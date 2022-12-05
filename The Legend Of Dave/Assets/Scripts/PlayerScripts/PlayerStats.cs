@@ -46,6 +46,7 @@ public class PlayerStats : MonoBehaviour
         UIController.instance.healthBar.value = currentHealth;
         UIController.instance.healthText.text = currentHealth.ToString() + " / " + maxHealth.ToString();
 
+        updateExit();
     }
 
     // Update is called once per frame
@@ -63,11 +64,11 @@ public class PlayerStats : MonoBehaviour
         }
         else
         {
-            PlayerMovement.instance.gameObject.SetActive(false);
+            scriptLoad.isDead = true;
+            transform.position = exitLocation;
+            //PlayerMovement.instance.gameObject.SetActive(false);
             //play dying animation
             //Disabling for now 
-
-            UIController.instance.deathScreen.SetActive(true);
         }
         // Update Health UI
         UIController.instance.healthBar.value = currentHealth;
@@ -103,6 +104,13 @@ public class PlayerStats : MonoBehaviour
         UIController.instance.healthText.text = currentHealth.ToString() + " / " + maxHealth.ToString();
     }
 
+    public void updateExit(){
+        roomExit = GameObject.Find("Triangle");
+        scriptLoad = roomExit.GetComponent<Load>();
+        exitLocation = roomExit.transform.position;
+        //Debug.Log("Exit has been updated");
+    }
+
     public void coinPickup (int amount)
     {
         coins += amount;
@@ -116,10 +124,5 @@ public class PlayerStats : MonoBehaviour
        {
             coins = 0;
        }
-    }
-
-    public void resetPlayer ()
-    {
-        currentHealth = maxHealth;
     }
 }
