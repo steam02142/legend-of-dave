@@ -1683,6 +1683,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5858483780221068951, guid: c31bd295430b2e24c80e0e12795a8adc, type: 3}
+      propertyPath: roomCount
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 5858483780221068951, guid: c31bd295430b2e24c80e0e12795a8adc, type: 3}
       propertyPath: numberOfFlashes
       value: 3
       objectReference: {fileID: 0}
