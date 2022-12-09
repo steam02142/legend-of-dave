@@ -564,8 +564,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47f572eb917991b4c9d9886b3d7ca67b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomExit: {fileID: 0}
-  exitLocation: {x: 0, y: 0, z: 0}
 --- !u!4 &1297343022
 Transform:
   m_ObjectHideFlags: 0
@@ -898,7 +896,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: 0
-  isDead: 0
 --- !u!61 &1444494065
 BoxCollider2D:
   m_ObjectHideFlags: 0
