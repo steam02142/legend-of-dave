@@ -12,11 +12,15 @@ public class Load : MonoBehaviour
     
     static int prevRoom;
 
+    private GameObject[] bossCheck;
+
     private GameObject[] enemyCheck;
 
     private Collider2D badcollider;
 
     static public int counter = 0;
+
+    int roomsToBoss = 24;
 
     private void Start() 
     {
@@ -34,14 +38,24 @@ public class Load : MonoBehaviour
             return;
         }
         enemyCheck = GameObject.FindGameObjectsWithTag("Enemy");
+        bossCheck = GameObject.FindGameObjectsWithTag("Boss");
 
-        if (!loaded && other.tag == "Player" && enemyCheck.Length == 0)
+        if (!loaded && other.tag == "Player" && enemyCheck.Length == 0 && bossCheck.Length == 0)
         {
             PlayerPrefs.SetInt("lastRoom", prevRoom);
             // Random room logic
+            if (PlayerStats.instance.roomCount != roomsToBoss)
+            {
+
             int randomNum = UniqueRandomInt(2, 15+1); //Should be to 15+1 atm. //can change for testing purposes
             randRoom = randomNum;
             sceneToLoad = randRoom;
+            }
+            else 
+            {
+                prevRoom = 16;
+                sceneToLoad = 16;
+            }
 
 
             PlayerPrefs.SetInt("currentRoom", sceneToLoad);

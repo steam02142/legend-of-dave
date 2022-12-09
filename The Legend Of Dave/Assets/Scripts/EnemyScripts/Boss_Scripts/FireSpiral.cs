@@ -29,7 +29,7 @@ public class FireSpiral : MonoBehaviour
         // Get bullet from pool and shoot it
         GameObject bullet = BulletPool.instance.GetBullet();
             bullet.transform.position = transform.position;
-            bullet.transform.rotation = transform.rotation;
+            bullet.transform.rotation =  transform.rotation;
             bullet.SetActive(true);
             bullet.GetComponent<Bullet>().setMoveDirection(bulletDirection);
 

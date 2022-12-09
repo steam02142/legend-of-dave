@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1192713976325884647}
   - component: {fileID: 1192713976325884646}
-  - component: {fileID: 5824754261736317510}
   - component: {fileID: 1192713976325884665}
   - component: {fileID: 1192713976325884666}
   - component: {fileID: 8494210537032118129}
+  - component: {fileID: -4069819474099914130}
   m_Layer: 10
   m_Name: Wizard
   m_TagString: Enemy
@@ -90,22 +90,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &5824754261736317510
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1192713976325884645}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.875
 --- !u!50 &1192713976325884665
 Rigidbody2D:
   serializedVersion: 4
@@ -153,6 +137,7 @@ MonoBehaviour:
   minRange: 4
   activationRange: 20
   activated: 0
+  touchDamage: 0
 --- !u!95 &8494210537032118129
 Animator:
   serializedVersion: 4
@@ -173,6 +158,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!70 &-4069819474099914130
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1192713976325884645}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.021925569, y: -0.14408207}
+  m_Size: {x: 0.7431581, y: 1.1862006}
+  m_Direction: 0
 --- !u!1 &2486384383437524206
 GameObject:
   m_ObjectHideFlags: 0

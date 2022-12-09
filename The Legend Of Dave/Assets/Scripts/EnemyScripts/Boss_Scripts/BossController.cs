@@ -16,7 +16,7 @@ public class BossController : MonoBehaviour
 
     public Animator animator;
 
-    public int health = 100;
+    public int health;
 
     public GameObject point1;
     public GameObject point2;
@@ -40,7 +40,7 @@ public class BossController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health = 100 * PlayerStats.instance.difficultyFactor;
+        health = 1000 * PlayerStats.instance.difficultyFactor;
 
         // Set how long the current action will take
         actionDuration = actions[currentAction].actionLength;

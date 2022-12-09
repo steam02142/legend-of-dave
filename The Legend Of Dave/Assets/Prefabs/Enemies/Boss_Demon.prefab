@@ -234,7 +234,7 @@ MonoBehaviour:
     shouldShoot: 0
     spiralShot: 0
     scatterShot: 0
-    bullet: {fileID: 7153716513993645115, guid: fdfe5162aee0016449df197286bc0557, type: 3}
+    bullet: {fileID: 0}
     timeBetweenShots: 0
     shootingPoints: []
   - actionLength: 2
@@ -262,7 +262,7 @@ MonoBehaviour:
     shouldShoot: 0
     spiralShot: 1
     scatterShot: 0
-    bullet: {fileID: 7153716513993645115, guid: fdfe5162aee0016449df197286bc0557, type: 3}
+    bullet: {fileID: 5144056200652339541, guid: a0ac6ce09921f024e9eb7ded9c08d5e8, type: 3}
     timeBetweenShots: 0.1
     shootingPoints:
     - {fileID: 3903909116346222168}
@@ -278,7 +278,7 @@ MonoBehaviour:
     shouldShoot: 0
     spiralShot: 0
     scatterShot: 1
-    bullet: {fileID: 7153716513993645115, guid: fdfe5162aee0016449df197286bc0557, type: 3}
+    bullet: {fileID: 5144056200652339541, guid: a0ac6ce09921f024e9eb7ded9c08d5e8, type: 3}
     timeBetweenShots: 0.5
     shootingPoints:
     - {fileID: 3903909116346222168}

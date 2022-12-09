@@ -31,12 +31,13 @@ public class BossBullet : MonoBehaviour
     {
         // Move bullet
         transform.position += direction * speed * Time.deltaTime;
-
+        /*
         // Boss has been defeated, destroy bullets
         if (!BossController.instance.gameObject.activeInHierarchy)
         {
             Destroy(gameObject);
         }
+        */
 
         currentRoom = SceneManager.GetSceneAt(1).buildIndex;
         if (spawnedRoom != currentRoom) {
