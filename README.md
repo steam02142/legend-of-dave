@@ -1,4 +1,4 @@
-# legend-of-dave
+# Legend-of-dave
 
 ## How to run in editor mode:
 
