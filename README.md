@@ -30,5 +30,4 @@ Once in unity,
 
 ## Things to know before running
 
-We did not have time to implement the main menu properly in the build so it only works when running the game from the editor. We also did not get around to adding a 
-pause menu so if you run from the executable you are stuck in the game until the end 
+We did not have time to implement the main menu properly in the build so you currently access it by running into the purple square. We also did not get around to adding a pause menu so if you run from the executable you are stuck in the game until the end of time. 
