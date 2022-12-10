@@ -7,6 +7,6 @@ public class SceneSwitch : MonoBehaviour
 {
   public void ChangeScene()
     {
-        SceneManager.LoadScene("NeverUnload");
+        SceneManager.LoadScene(0);
     }
 }
