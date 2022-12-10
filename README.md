@@ -1,5 +1,7 @@
 # Legend-of-dave
 
+The Legend of Dave is a rouge-like dungeon crawler. The game features random room orders, multiple enemies, and a boss (after level 25). There is also a currency system which allows the player to get upgrades after each death.
+
 ## IMPORTANT
 
 Make sure everything is done in the main branch - other branches are experimental, dated, unstable, or all three
@@ -34,4 +36,4 @@ Once opened in unity,
 
 ### Things to know before running
 
-We did not have time to implement the main menu properly in the build so you currently access it by running into the purple square. We also did not get around to adding a pause menu so if you run from the executable you are stuck in the game until the end of time. 
+We did not have time to implement the main menu properly in the build so you currently access it by running into the purple square. If you access this menu mid run it will delete your progress. We also did not get around to adding a pause menu so if you run from the executable you are stuck in the game until the end of time. 
